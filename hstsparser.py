@@ -4,6 +4,12 @@ from prettytable import PrettyTable
 import os
 import re
 
+def printDB(database, field_names):
+    table = PrettyTable()
+    table.field_names = field_names
+    for i in database:
+        table.add_row(i)
+    print(table)
 
 def serial_date_to_string(srl_no):
     new_date = datetime.datetime.utcfromtimestamp(0) + datetime.timedelta(int(srl_no))
@@ -48,15 +54,12 @@ if args.firefox:
             else:
                 record.append("No")
             database.append(record)
-    table = PrettyTable()
-    table.field_names = [
+    printDB(database, [
         "URL",
         "Visits",
         "Last Accessed",
         "Expiry",
         "Type",
         "Include Subdomains",
-    ]
-    for i in database:
-        table.add_row(i)
-    print(table)
+    ])
+
