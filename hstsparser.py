@@ -3,6 +3,8 @@ from argparse import ArgumentParser
 from prettytable import PrettyTable
 import os
 import re
+import json
+from time import sleep
 
 
 def printDB(database, field_names):
@@ -39,9 +41,9 @@ group.add_argument("--chrome", action="store_true", help="Process a Chrome datab
 args = parser.parse_args()
 
 dirtydb = args.database_file.read()
+database = []
 
 if args.firefox:
-    database = []
     dirtydb = dirtydb.split("\n")
     for i in dirtydb:
         if i != "":
@@ -60,3 +62,22 @@ if args.firefox:
         database,
         ["URL", "Visits", "Last Accessed", "Expiry", "Type", "Include Subdomains"],
     )
+
+if args.chrome:
+    dirtydb = json.loads(dirtydb)
+    for i in dirtydb:
+        current = dirtydb[i]
+        if "expect_ct" not in current:
+            if bool(current["sts_include_subdomains"]):
+                subdomains = "Yes"
+            else:
+                subdomains = "No"
+            database.append(
+                [
+                    i,
+                    datetime.datetime.fromtimestamp(current["expiry"]),
+                    subdomains,
+                    datetime.datetime.fromtimestamp(current["sts_observed"]),
+                ]
+            )
+    printDB(database, ["Base64 URL Hash", "Expiry", "Include Subdomains", "Last Observed"])
