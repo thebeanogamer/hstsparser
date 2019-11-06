@@ -80,4 +80,6 @@ if args.chrome:
                     datetime.datetime.fromtimestamp(current["sts_observed"]),
                 ]
             )
-    printDB(database, ["Base64 URL Hash", "Expiry", "Include Subdomains", "Last Observed"])
+    printDB(
+        database, ["Base64 URL Hash", "Expiry", "Include Subdomains", "Last Observed"]
+    )
