@@ -14,7 +14,6 @@ def convert(domain):
     idx = 0
     for char in reversed(domain):
         if char == ".":
-            # output.append(my_hex(idx))
             output.append(chr(idx))
             idx = 0
         else:
