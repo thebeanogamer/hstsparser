@@ -140,3 +140,4 @@ $RECYCLE.BIN/
 SiteSecurityServiceState.txt
 TransportSecurity
 wordlist.txt
+.venv
