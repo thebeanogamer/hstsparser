@@ -1,11 +1,12 @@
 import datetime
-from argparse import ArgumentParser
-from prettytable import PrettyTable
+import json
 import os
 import re
-import json
-from hashlib import sha256
+from argparse import ArgumentParser
 from base64 import b64encode
+from hashlib import sha256
+
+from prettytable import PrettyTable
 
 
 def convert(domain):
