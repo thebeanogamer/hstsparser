@@ -115,9 +115,17 @@ if args.chrome:
             if len(i) == 4:
                 i.append("")
         printDB(
-            database, ["Base64 URL Hash", "Expiry", "Include Subdomains", "Last Observed", "Cracked Hash"]
+            database,
+            [
+                "Base64 URL Hash",
+                "Expiry",
+                "Include Subdomains",
+                "Last Observed",
+                "Cracked Hash",
+            ],
         )
     else:
         printDB(
-            database, ["Base64 URL Hash", "Expiry", "Include Subdomains", "Last Observed"]
+            database,
+            ["Base64 URL Hash", "Expiry", "Include Subdomains", "Last Observed"],
         )
