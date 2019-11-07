@@ -1,0 +1,31 @@
+pr:
+  autoCancel: false
+  branches:
+    include:
+    - '*'
+
+jobs:
+- job: lint
+  displayName: 'Lint'
+
+  pool:
+    vmImage: 'Ubuntu 18.04'
+
+  steps:
+  - task: UsePythonVersion@0
+    displayName: 'Set Python version'
+    inputs:
+      versionSpec: '3.7.x'
+      addToPath: true
+
+  - script: pip install -r requirements-ci.txt
+    displayName: 'Install project using pip'
+
+  - script: python -m flake8 .
+    displayName: 'Run linter'
+
+  - task: PublishTestResults@2
+    condition: succeededOrFailed()
+    inputs:
+      testResultsFiles: '**/flake8.xml'
+      testRunTitle: 'Publish test results from flake8'
