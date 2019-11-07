@@ -12,7 +12,7 @@ Installing HSTS Parser is easy! Just run the below command to install the depend
 pip3 install -r requirements.txt
 ```
 
-Alternatively, if you're using Windows, you can use the executables on the releases page to not need to install anything at all.
+Alternatively, if you're using Windows, you can use the executables on the [releases page](https://github.com/thebeanogamer/hstsparser/releases/latest) to not need to install anything at all.
 
 ## Usage
 
