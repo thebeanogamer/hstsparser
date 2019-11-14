@@ -136,7 +136,7 @@ description = "Flake8 and pylama plugin that checks the ordering of import state
 name = "flake8-import-order"
 optional = false
 python-versions = "*"
-version = "0.18"
+version = "0.18.1"
 
 [package.dependencies]
 pycodestyle = "*"
@@ -350,7 +350,7 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, <4"
 version = "1.25.6"
 
 [metadata]
-content-hash = "fb1706ee19d7c53a01404db8900ab4a41512d5e29984bd56df53b4d52bc5cf2b"
+content-hash = "e95776fffeba3d36d2c5e96fc06dccf6e76c1e5e9c3ed850277579e36270c57d"
 python-versions = "^3.7"
 
 [metadata.hashes]
@@ -367,7 +367,7 @@ entrypoints = ["589f874b313739ad35be6e0cd7efde2a4e9b6fea91edcc34e58ecbb8dbe56d19
 flake8 = ["45681a117ecc81e870cbf1262835ae4af5e7a8b08e40b944a8a6e6b895914cfb", "49356e766643ad15072a789a20915d3c91dc89fd313ccd71802303fd67e4deca"]
 flake8-bandit = ["a66c7b42af9530d5e988851ccee02958a51a85d46f1f4609ecc3546948f809b8", "f7c3421fd9aebc63689c0693511e16dcad678fd4a0ce624b78ca91ae713eacdc"]
 flake8-bugbear = ["d8c466ea79d5020cb20bf9f11cf349026e09517a42264f313d3f6fddb83e0571", "ded4d282778969b5ab5530ceba7aa1a9f1b86fa7618fc96a19a1d512331640f8"]
-flake8-import-order = ["9be5ca10d791d458eaa833dd6890ab2db37be80384707b0f76286ddd13c16cbf", "feca2fd0a17611b33b7fa84449939196c2c82764e262486d5c3e143ed77d387b"]
+flake8-import-order = ["90a80e46886259b9c396b578d75c749801a41ee969a235e163cfe1be7afd2543", "a28dc39545ea4606c1ac3c24e9d05c849c6e5444a50fb7e9cdd430fc94de6e92"]
 flake8-polyfill = ["12be6a34ee3ab795b19ca73505e7b55826d5f6ad7230d31b18e106400169b9e9", "e44b087597f6da52ec6393a709e7108b2905317d0c0b744cdca6208e670d8eda"]
 flake8-string-format = ["68ea72a1a5b75e7018cae44d14f32473c798cf73d75cbaed86c6a9a907b770b2", "774d56103d9242ed968897455ef49b7d6de272000cfa83de5814273a868832f1"]
 flake8-tidy-imports = ["8460933e89449e2e9d1d38ef1c099ad713d67cd1d13f172b8d025030a9887a6f", "a1f6a962ce4e733858187c1c047f98246e400af2e6bed90e780d888e439938da"]
