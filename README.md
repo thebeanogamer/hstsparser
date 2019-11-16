@@ -1,6 +1,6 @@
 # HSTS Parser
 
-[![Build Status](https://thebeanogamer.visualstudio.com/HSTSparser/_apis/build/status/HSTSparser?branchName=master)](https://thebeanogamer.visualstudio.com/HSTSparser/_build/latest?definitionId=2&branchName=master) ![Publish Status](https://thebeanogamer.vsrm.visualstudio.com/_apis/public/Release/badge/f24623e9-719d-4c7f-b194-3be7917a22bf/1/1) ![Licence](https://img.shields.io/github/license/thebeanogamer/hstsparser) ![Python 3.7.x](https://img.shields.io/badge/python-3.7.x-yellow.svg) 
+[![Build Status](https://thebeanogamer.visualstudio.com/HSTSparser/_apis/build/status/HSTSparser?branchName=master)](https://thebeanogamer.visualstudio.com/HSTSparser/_build/latest?definitionId=2&branchName=master) ![Publish Status](https://thebeanogamer.vsrm.visualstudio.com/_apis/public/Release/badge/f24623e9-719d-4c7f-b194-3be7917a22bf/1/1) ![Licence](https://img.shields.io/github/license/thebeanogamer/hstsparser) ![Python 3.7.x](https://img.shields.io/badge/python-3.7.x-yellow.svg)
 
 HSTS Parser is a simple tool to parse Firefox and Chrome's HSTS databases into actually helpful forensic artifacts! You can read more about the research behind this tool and potential uses for it over on [my blog](https://blog.daniel-milnes.uk/hsts-for-forensics-you-can-run-but-you-cant)!
 
@@ -30,11 +30,13 @@ positional arguments:
 optional arguments:
   -h, --help   show this help message and exit
   -w WORDLIST  The path to the database to be processed
+  --csv CSV    Output to a CSV file
   --firefox    Process a Firefox database
   --chrome     Process a Chrome database
 ```
 
 ### Examples
+
 #### Firefox
 
 ```shell
@@ -57,11 +59,11 @@ python3 hstsparser.py -w wordlist.txt --chrome TransportSecurity
 
 ### Firefox
 
-![](https://blog.daniel-milnes.uk/content/images/2019/11/image-3.png)
+![Screenshot of Firefox Processing](https://blog.daniel-milnes.uk/content/images/2019/11/image-3.png)
 
 ### Chrome with Wordlist
 
-![](https://blog.daniel-milnes.uk/content/images/2019/11/image-4.png)
+![Screenshot of Chrome Processing with a wordlist](https://blog.daniel-milnes.uk/content/images/2019/11/image-4.png)
 
 ## Links
 

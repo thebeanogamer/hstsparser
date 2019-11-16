@@ -1,3 +1,4 @@
+import csv
 import datetime
 import json
 import os
@@ -9,7 +10,7 @@ from hashlib import sha256
 from prettytable import PrettyTable
 
 
-def convert(domain):
+def convert_domain(domain):
     output = [chr(0)]
     idx = 0
     for char in reversed(domain):
@@ -23,7 +24,7 @@ def convert(domain):
     return b64encode(sha256("".join(reversed(output)).encode("utf-8")).digest())
 
 
-def printDB(database, field_names):
+def print_db(database, field_names):
     table = PrettyTable()
     table.field_names = field_names
     for i in database:
@@ -43,6 +44,35 @@ def is_valid_file(parser, arg):
         return open(arg, "r")
 
 
+def file_already_exists(parser, arg):
+    if os.path.exists(arg):
+        parser.error(f"The file {arg} already exists!")
+    else:
+        return open(arg, "w", newline="")
+
+
+def print_if_no_args(database, field_names):
+    if not args.csv_file:
+        print_db(database, field_names)
+    else:
+        file_write(database, field_names)
+
+
+def file_write(database, field_names):
+    if args.csv_file:
+        with args.csv_file as csvfile:
+            csvfile = csv.writer(csvfile)
+            csvfile.writerow(field_names)
+            for i in database:
+                csvfile.writerow(i)
+
+
+def date_round(date):
+    return date - datetime.timedelta(
+        minutes=date.minute % 10, seconds=date.second, microseconds=date.microsecond
+    )
+
+
 parser = ArgumentParser(description="Process HSTS databases")
 parser.add_argument(
     dest="database_file",
@@ -56,6 +86,13 @@ parser.add_argument(
     help="The path to the database to be processed",
     metavar="WORDLIST",
     type=lambda x: is_valid_file(parser, x),
+)
+parser.add_argument(
+    "--csv",
+    dest="csv_file",
+    help="Output to a CSV file",
+    metavar="CSV",
+    type=lambda x: file_already_exists(parser, x),
 )
 group = parser.add_mutually_exclusive_group(required=True)
 group.add_argument("--firefox", action="store_true", help="Process a Firefox database")
@@ -80,8 +117,10 @@ if args.firefox:
                 record.append("Yes")
             else:
                 record.append("No")
+            if args.csv_file:
+                record[3] = date_round(record[3])
             database.append(record)
-    printDB(
+    print_if_no_args(
         database,
         ["URL", "Visits", "Last Accessed", "Expiry", "Type", "Include Subdomains"],
     )
@@ -95,26 +134,28 @@ if args.chrome:
                 subdomains = "Yes"
             else:
                 subdomains = "No"
-            database.append(
-                [
-                    i,
-                    datetime.datetime.fromtimestamp(current["expiry"]),
-                    subdomains,
-                    datetime.datetime.fromtimestamp(current["sts_observed"]),
-                ]
-            )
+            record = [
+                i,
+                datetime.datetime.fromtimestamp(current["expiry"]),
+                subdomains,
+                datetime.datetime.fromtimestamp(current["sts_observed"]),
+            ]
+            if args.csv_file:
+                record[1] = date_round(record[1])
+                record[3] = date_round(record[3])
+            database.append(record)
     if args.wordlist_file:
         wordlist = args.wordlist_file.read().splitlines()
         rainbow = []
         for i in wordlist:
-            rainbow.append(convert(i))
+            rainbow.append(convert_domain(i))
         for i in database:
             for j in range(0, len(rainbow)):
                 if i[0] == rainbow[j].decode("utf-8"):
                     i.append(wordlist[j])
             if len(i) == 4:
                 i.append("")
-        printDB(
+        print_if_no_args(
             database,
             [
                 "Base64 URL Hash",
@@ -125,7 +166,7 @@ if args.chrome:
             ],
         )
     else:
-        printDB(
+        print_if_no_args(
             database,
             ["Base64 URL Hash", "Expiry", "Include Subdomains", "Last Observed"],
         )
