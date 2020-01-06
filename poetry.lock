@@ -171,7 +171,7 @@ description = "A flake8 plugin that helps you write tidier imports."
 name = "flake8-tidy-imports"
 optional = false
 python-versions = ">=3.5"
-version = "3.1.0"
+version = "4.0.0"
 
 [package.dependencies]
 flake8 = ">=3.0,<3.2.0 || >3.2.0,<4"
@@ -388,7 +388,7 @@ version = "0.6.0"
 more-itertools = "*"
 
 [metadata]
-content-hash = "5a5bb77f17d368ca6108386f07b7cb0faed56f1b3511262613e12876bd977a83"
+content-hash = "c66460c282f0a360323cefb8d003395a9d9d64f389cb69e7965e7c7c741291f6"
 python-versions = "^3.7"
 
 [metadata.hashes]
@@ -408,7 +408,7 @@ flake8-bugbear = ["09a12ebe427279cf7aa9445114a68d83a6f0ffccdd4105368d6e85373541e
 flake8-import-order = ["90a80e46886259b9c396b578d75c749801a41ee969a235e163cfe1be7afd2543", "a28dc39545ea4606c1ac3c24e9d05c849c6e5444a50fb7e9cdd430fc94de6e92"]
 flake8-polyfill = ["12be6a34ee3ab795b19ca73505e7b55826d5f6ad7230d31b18e106400169b9e9", "e44b087597f6da52ec6393a709e7108b2905317d0c0b744cdca6208e670d8eda"]
 flake8-string-format = ["68ea72a1a5b75e7018cae44d14f32473c798cf73d75cbaed86c6a9a907b770b2", "774d56103d9242ed968897455ef49b7d6de272000cfa83de5814273a868832f1"]
-flake8-tidy-imports = ["1aae368561f79b5db7687e78015981a854fa4656158bf1f3f12c7ff597672140", "4b8a9e9a2fc4e8825d57e41315ff17ab046f31243ab0bda5527f973378e9892e"]
+flake8-tidy-imports = ["8aa34384b45137d4cf33f5818b8e7897dc903b1d1e10a503fa7dd193a9a710ba", "b26461561bcc80e8012e46846630ecf0aaa59314f362a94cb7800dfdb32fa413"]
 flake8-todo = ["6e4c5491ff838c06fe5a771b0e95ee15fc005ca57196011011280fc834a85915"]
 gitdb2 = ["1b6df1433567a51a4a9c1a5a0de977aa351a405cc56d7d35f3388bad1f630350", "96bbb507d765a7f51eb802554a9cfe194a174582f772e0d89f4e87288c288b7b"]
 gitpython = ["3237caca1139d0a7aa072f6735f5fd2520de52195e0fa1d8b83a9b212a2498b2", "a7d6bef0775f66ba47f25911d285bcd692ce9053837ff48a120c2b8cf3a71389"]
