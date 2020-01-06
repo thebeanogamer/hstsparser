@@ -68,7 +68,7 @@ description = "Dodgy: Searches for dodgy looking lines in Python code"
 name = "dodgy"
 optional = false
 python-versions = "*"
-version = "0.1.9"
+version = "0.2.1"
 
 [[package]]
 category = "dev"
@@ -388,7 +388,7 @@ version = "0.6.0"
 more-itertools = "*"
 
 [metadata]
-content-hash = "c66460c282f0a360323cefb8d003395a9d9d64f389cb69e7965e7c7c741291f6"
+content-hash = "91d4b10c9ec73f0100246365e458b7e921af1b38d08a7209d4288101b162ebdd"
 python-versions = "^3.7"
 
 [metadata.hashes]
@@ -399,7 +399,7 @@ certifi = ["e4f3620cfea4f83eedc95b24abd9cd56f3c4b146dd0177e83a21b4eb49e21e50", "
 chardet = ["84ab92ed1c4d4f16916e05906b6b75a6c0fb5db821cc65e70cbd64a3e2a5eaae", "fc323ffcaeaed0e0a02bf4d117757b98aed530d9ed4531e3e15460124c106691"]
 click = ["2335065e6395b9e67ca716de5f7526736bfa6ceead690adf616d925bdc622b13", "5b94b49521f6456670fdb30cd82a4eca9412788a93fa6dd6df72c94d5a8ff2d7"]
 colorama = ["05eed71e2e327246ad6b38c540c4a3117230b19679b875190486ddd2d721422d", "f8ac84de7840f5b9c4e3347b3c1eaa50f7e49c2b07596221daec5edaabbd7c48"]
-dodgy = ["65e13cf878d7aff129f1461c13cb5fd1bb6dfe66bb5327e09379c3877763280c"]
+dodgy = ["28323cbfc9352139fdd3d316fa17f325cc0e9ac74438cbba51d70f9b48f86c3a", "51f54c0fd886fa3854387f354b19f429d38c04f984f38bc572558b703c0542a6"]
 dparse = ["00a5fdfa900629e5159bf3600d44905b333f4059a3366f28e0dbd13eeab17b19", "cef95156fa0adedaf042cd42f9990974bec76f25dfeca4dc01f381a243d5aa5b"]
 entrypoints = ["589f874b313739ad35be6e0cd7efde2a4e9b6fea91edcc34e58ecbb8dbe56d19", "c70dd71abe5a8c85e55e12c19bd91ccfeec11a6e99044204511f9ed547d48451"]
 flake8 = ["45681a117ecc81e870cbf1262835ae4af5e7a8b08e40b944a8a6e6b895914cfb", "49356e766643ad15072a789a20915d3c91dc89fd313ccd71802303fd67e4deca"]
