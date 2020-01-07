@@ -19,7 +19,7 @@ flake8-string-format = "=0.2.3"
 flake8-tidy-imports = "=4.0.0"
 flake8-todo = "=0.7"
 safety = "=1.8.5"
-dodgy = "=0.1.9"
+dodgy = "=0.2.1"
 
 [build-system]
 requires = ["poetry>=0.12"]
