@@ -3,6 +3,7 @@ import datetime
 import json
 import os
 import re
+import typing
 from argparse import ArgumentParser
 from base64 import b64encode
 from hashlib import sha256
@@ -10,7 +11,10 @@ from hashlib import sha256
 from prettytable import PrettyTable
 
 
-def convert_domain(domain):
+def convert_domain(domain: str) -> str:
+    """
+    Convert string to the Google Chrome domain format
+    """
     output = [chr(0)]
     idx = 0
     for char in reversed(domain):
@@ -24,7 +28,10 @@ def convert_domain(domain):
     return b64encode(sha256("".join(reversed(output)).encode("utf-8")).digest())
 
 
-def print_db(database, field_names):
+def print_db(database: list, field_names: list) -> None:
+    """
+    Print the database in a formatted table
+    """
     table = PrettyTable()
     table.field_names = field_names
     for i in database:
@@ -32,33 +39,48 @@ def print_db(database, field_names):
     print(table)
 
 
-def serial_date_to_string(srl_no):
+def serial_date_to_string(srl_no: str) -> str:
+    """
+    Convert serial date object to printable string
+    """
     new_date = datetime.datetime.utcfromtimestamp(0) + datetime.timedelta(int(srl_no))
     return new_date.strftime("%Y-%m-%d")
 
 
-def is_valid_file(parser, arg):
+def is_valid_file(parser: ArgumentParser, arg: str) -> typing.TextIO:
+    """
+    Check that file already exists
+    """
     if not os.path.exists(arg):
         parser.error(f"The file {arg} does not exist!")
     else:
         return open(arg, "r")
 
 
-def file_already_exists(parser, arg):
+def file_already_exists(parser: ArgumentParser, arg: str) -> typing.TextIO:
+    """
+    Check that the file does not already exist
+    """
     if os.path.exists(arg):
         parser.error(f"The file {arg} already exists!")
     else:
         return open(arg, "w", newline="")
 
 
-def print_if_no_args(database, field_names):
+def print_if_no_args(database: list, field_names: list) -> None:
+    """
+    Print database if no output file has been specified
+    """
     if not args.csv_file:
         print_db(database, field_names)
     else:
         file_write(database, field_names)
 
 
-def file_write(database, field_names):
+def file_write(database: list, field_names: list) -> None:
+    """
+    Write to a CSV file
+    """
     if args.csv_file:
         with args.csv_file as csvfile:
             csvfile = csv.writer(csvfile)
@@ -67,7 +89,10 @@ def file_write(database, field_names):
                 csvfile.writerow(i)
 
 
-def date_round(date):
+def date_round(date: datetime.datetime) -> datetime.datetime:
+    """
+    Round `datetime` object
+    """
     return date - datetime.timedelta(
         minutes=date.minute % 10, seconds=date.second, microseconds=date.microsecond
     )
