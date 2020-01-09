@@ -1,6 +1,7 @@
 import csv
 import datetime
 import json
+import typing
 import os
 import re
 from argparse import ArgumentParser
