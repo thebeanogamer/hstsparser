@@ -1,9 +1,9 @@
 import csv
 import datetime
 import json
-import typing
 import os
 import re
+import typing
 from argparse import ArgumentParser
 from base64 import b64encode
 from hashlib import sha256
