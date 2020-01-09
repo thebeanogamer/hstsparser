@@ -55,6 +55,7 @@ def is_valid_file(parser: ArgumentParser, arg: str) -> typing.TextIO:
     else:
         return open(arg, "r")
 
+
 def file_already_exists(parser: ArgumentParser, arg: str) -> typing.TextIO:
     """
     Check that the file does not already exist
