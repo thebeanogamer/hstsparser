@@ -15,11 +15,17 @@ jobs:
   - task: UsePythonVersion@0
     displayName: 'Set Python version'
     inputs:
-      versionSpec: '3.7.x'
+      versionSpec: '3.8.x'
       addToPath: true
 
-  - script: pip install -r requirements-ci.txt
-    displayName: 'Install project using pip'
+  - script: curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python
+    displayName: Install Poetry
+
+  - script: $HOME/.poetry/bin/poetry config virtualenvs.create false
+    displayName: Disable Poetry VirtualEnvs
+
+  - script: $HOME/.poetry/bin/poetry install --no-interaction --no-ansi
+    displayName: Install project using Poetry
 
   - script: python -m flake8 .
     displayName: 'Run linter'
