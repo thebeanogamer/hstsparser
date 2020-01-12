@@ -1,0 +1,43 @@
+trigger:
+- master
+
+pr: none
+
+jobs:
+  - job: Publish
+    displayName: Publish
+
+    pool:
+      vmImage: windows-latest
+
+    steps:
+    - task: UsePythonVersion@0
+      displayName: 'Use Python 3.8.x'
+      inputs:
+        versionSpec: 3.8.x
+        addToPath: true
+
+    - task: PowerShell@2
+      inputs:
+        targetType: 'inline'
+        script: '(Invoke-WebRequest -Uri https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py -UseBasicParsing).Content | python'
+      displayName: Install Poetry
+
+    - script: '%USERPROFILE%/.poetry/bin/poetry config virtualenvs.create false'
+      displayName: Disable Poetry VirtualEnvs
+
+    - script: '%USERPROFILE%/.poetry/bin/poetry install --no-interaction --no-ansi'
+      displayName: Install project using Poetry
+
+    - task: PowerShell@2
+      inputs:
+        targetType: 'inline'
+        script: 'pyinstaller --onefile hstsparser.py'
+      displayName: 'Create Executable'
+
+    - task: GitHubRelease@1
+      displayName: 'GitHub release (create)'
+      inputs:
+        gitHubConnection: 'github.com'
+        tagPattern: '.*'
+        assets: '$(System.DefaultWorkingDirectory)\dist\hstsparser.exe'
