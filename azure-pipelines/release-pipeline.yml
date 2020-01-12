@@ -44,6 +44,6 @@ jobs:
     - task: GitHubRelease@1
       displayName: 'GitHub release (create)'
       inputs:
-        gitHubConnection: 'GitHub Connection 1'
+        gitHubConnection: 'github.com'
         tagPattern: '.*'
         assets: '$(System.DefaultWorkingDirectory)\dist\hstsparser.exe'
