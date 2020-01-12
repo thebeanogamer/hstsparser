@@ -26,13 +26,13 @@ jobs:
     - task: PowerShell@2
       inputs:
         targetType: 'inline'
-        script: '$HOME/.poetry/bin/poetry config virtualenvs.create false'
+        script: '%USERPROFILE%/.poetry/bin/poetry config virtualenvs.create false'
       displayName: Disable Poetry VirtualEnvs
 
     - task: PowerShell@2
       inputs:
         targetType: 'inline'
-        script: '$HOME/.poetry/bin/poetry install --no-interaction --no-ansi'
+        script: '%USERPROFILE%/.poetry/bin/poetry install --no-interaction --no-ansi'
       displayName: Install project using Poetry
 
     - task: PowerShell@2
