@@ -317,6 +317,14 @@ version = "2.4.6"
 
 [[package]]
 category = "dev"
+description = ""
+name = "pywin32-ctypes"
+optional = false
+python-versions = "*"
+version = "0.2.0"
+
+[[package]]
+category = "dev"
 description = "YAML parser and emitter for Python"
 name = "pyyaml"
 optional = false
@@ -398,7 +406,7 @@ secure = ["pyOpenSSL (>=0.14)", "cryptography (>=1.3.4)", "idna (>=2.0.0)", "cer
 socks = ["PySocks (>=1.5.6,<1.5.7 || >1.5.7,<2.0)"]
 
 [metadata]
-content-hash = "067dfbf70ec71fc06f33441c3e0cdd0f0e3af753a887613b705c3474a39f8012"
+content-hash = "fb1474e592242417e6dc9141fa47532313ef44d547a6cdf8cbff0893ea2ff330"
 python-versions = "^3.8"
 
 [metadata.files]
@@ -522,6 +530,10 @@ pyinstaller = [
 pyparsing = [
     {file = "pyparsing-2.4.6-py2.py3-none-any.whl", hash = "sha256:c342dccb5250c08d45fd6f8b4a559613ca603b57498511740e65cd11a2e7dcec"},
     {file = "pyparsing-2.4.6.tar.gz", hash = "sha256:4c830582a84fb022400b85429791bc551f1f4871c33f23e44f353119e92f969f"},
+]
+pywin32-ctypes = [
+    {file = "pywin32-ctypes-0.2.0.tar.gz", hash = "sha256:24ffc3b341d457d48e8922352130cf2644024a4ff09762a2261fd34c36ee5942"},
+    {file = "pywin32_ctypes-0.2.0-py2.py3-none-any.whl", hash = "sha256:9dc2d991b3479cc2df15930958b674a48a227d5361d413827a4cfd0b5876fc98"},
 ]
 pyyaml = [
     {file = "PyYAML-5.3-cp27-cp27m-win32.whl", hash = "sha256:940532b111b1952befd7db542c370887a8611660d2b9becff75d39355303d82d"},

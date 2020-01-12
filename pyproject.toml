@@ -21,6 +21,7 @@ flake8-todo = "=0.7"
 safety = "=1.8.5"
 dodgy = "=0.2.1"
 pyinstaller = "^3.6"
+pywin32-ctypes = "^0.2.0"
 
 [build-system]
 requires = ["poetry>=0.12"]
