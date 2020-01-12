@@ -50,19 +50,19 @@ optional arguments:
 #### Firefox
 
 ```shell
-python3 hstsparser.py --firefox SiteSecurityServiceState.txt
+poetry run python hstsparser.py --firefox SiteSecurityServiceState.txt
 ```
 
 #### Chrome
 
 ```shell
-python3 hstsparser.py --chrome TransportSecurity
+poetry run python hstsparser.py --chrome TransportSecurity
 ```
 
 #### Chrome with Wordlist
 
 ```shell
-python3 hstsparser.py -w wordlist.txt --chrome TransportSecurity
+poetry run python hstsparser.py -w wordlist.txt --chrome TransportSecurity
 ```
 
 ## Screenshots
