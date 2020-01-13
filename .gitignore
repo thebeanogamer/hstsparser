@@ -141,3 +141,5 @@ SiteSecurityServiceState.txt
 TransportSecurity
 wordlist.txt
 .venv
+
+flake8.xml
