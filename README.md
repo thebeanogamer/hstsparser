@@ -26,7 +26,7 @@ Alternatively, if you're using Windows, you can use the executables on the [rele
 
 ## Usage
 
-All of the below documentation is written for the Python version rather than the standalone, but the commands are the same, just replacing `python3 hstsparser.py` with the name of the executable.
+All of the below documentation is written for the Python version rather than the standalone, but the commands are the same, just replacing `poetry run python hstsparser.py` with the name of the executable.
 
 ```shell
 $ poetry run python hstsparser.py -h
