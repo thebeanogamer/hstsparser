@@ -33,5 +33,5 @@ jobs:
   - task: PublishTestResults@2
     condition: succeededOrFailed()
     inputs:
-      testResultsFiles: '**/flake8.xml'
+      testResultsFiles: '$(System.DefaultWorkingDirectory)/flake8.xml'
       testRunTitle: 'Publish test results from flake8'
