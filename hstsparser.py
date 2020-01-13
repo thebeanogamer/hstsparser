@@ -140,7 +140,7 @@ if args.firefox:
             try:
                 record[3] = datetime.datetime.fromtimestamp(int(cleaned[0]) / 1000)
             except (OSError, ValueError):
-                record[3] = datetime.datetime.fromtimestamp(32503680000) # 3000-01-01 00:00:00
+                record[3] = datetime.datetime.fromtimestamp(32503680000)  # 3000-01-01 00:00:00
             if int(cleaned[2]):
                 record.append("Yes")
             else:
