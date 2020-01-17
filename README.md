@@ -6,17 +6,20 @@ HSTS Parser is a simple tool to parse Firefox and Chrome's HSTS databases into a
 
 ## Installation
 
-Installing HSTS Parser is easy! Just run the below commands to install everything you need!
+HSTS Parser can be installed via pip, or with [Poetry](https://python-poetry.org/).
 
-### Linux
+### From PyPi
+```bash
+pip install hstsparser
+```
 
+### Poetry (Linux)
 ```bash
 curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
 poetry install
 ```
 
-### Windows
-
+### Poetry (Windows)
 ```powershell
 (Invoke-WebRequest -Uri https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py -UseBasicParsing).Content | python
 poetry install
@@ -26,10 +29,8 @@ Alternatively, if you're using Windows, you can use the executables on the [rele
 
 ## Usage
 
-All of the below documentation is written for the Python version rather than the standalone, but the commands are the same, just replacing `poetry run python hstsparser.py` with the name of the executable.
-
 ```shell
-$ poetry run python hstsparser.py -h
+$ hstsparser -h
 usage: hstsparser.py [-h] [-w WORDLIST] (--firefox | --chrome) FILE
 
 Process HSTS databases
@@ -50,19 +51,19 @@ optional arguments:
 #### Firefox
 
 ```shell
-poetry run python hstsparser.py --firefox SiteSecurityServiceState.txt
+hstsparser --firefox SiteSecurityServiceState.txt
 ```
 
 #### Chrome
 
 ```shell
-poetry run python hstsparser.py --chrome TransportSecurity
+hstsparser --chrome TransportSecurity
 ```
 
 #### Chrome with Wordlist
 
 ```shell
-poetry run python hstsparser.py -w wordlist.txt --chrome TransportSecurity
+hstsparser -w wordlist.txt --chrome TransportSecurity
 ```
 
 ## Screenshots

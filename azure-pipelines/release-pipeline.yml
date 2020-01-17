@@ -41,3 +41,9 @@ jobs:
         gitHubConnection: 'github.com'
         tagPattern: '.*'
         assets: '$(System.DefaultWorkingDirectory)\dist\hstsparser.exe'
+
+    - task: PyPiRelease@0
+      inputs:
+        targetType: 'inline'
+        script: 'poetry --build publish -u $(PyPi.Username) -p $(PyPi.Password)'
+      displayName: 'PyPi release'
