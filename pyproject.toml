@@ -1,9 +1,10 @@
 [tool.poetry]
 name = "hstsparser"
 version = "0.1.0"
-description = ""
+description = "A tool to parse Firefox and Chrome HSTS databases into forensic artifacts."
 authors = ["Daniel Milnes <thebeanogamer@gmail.com>"]
 license = "MIT"
+readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.8"
