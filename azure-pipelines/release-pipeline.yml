@@ -34,6 +34,9 @@ jobs:
         targetType: 'inline'
         script: '%USERPROFILE%/.poetry/bin/poetry --build publish -u $(PyPi.Username) -p $(PyPi.Password)'
       displayName: Publish pip package with Poetry
+      env:
+        PyPi.Username: $(PyPi.Username)
+        PyPi.Password: $(PyPi.Password)
 
     - task: PowerShell@2
       inputs:
