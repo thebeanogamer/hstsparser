@@ -1,6 +1,6 @@
 # HSTS Parser
 
-[![Build Status](https://dev.azure.com/thebeanogamer/HSTSparser/_apis/build/status/Lint%20Pipeline?branchName=master)](https://dev.azure.com/thebeanogamer/HSTSparser/_build/latest?definitionId=2&branchName=master) [![Release Status](https://dev.azure.com/thebeanogamer/HSTSparser/_apis/build/status/Release%20Pipeline?branchName=master)](https://dev.azure.com/thebeanogamer/HSTSparser/_build/latest?definitionId=7&branchName=master) ![Licence](https://img.shields.io/github/license/thebeanogamer/hstsparser) ![Python 3.8.x](https://img.shields.io/badge/python-3.8.x-yellow.svg)
+[![Build Status](https://dev.azure.com/thebeanogamer/HSTSparser/_apis/build/status/Lint%20Pipeline?branchName=master)](https://dev.azure.com/thebeanogamer/HSTSparser/_build/latest?definitionId=2&branchName=master) [![Release Status](https://dev.azure.com/thebeanogamer/HSTSparser/_apis/build/status/Release%20Pipeline?branchName=master)](https://dev.azure.com/thebeanogamer/HSTSparser/_build/latest?definitionId=7&branchName=master) ![Licence](https://img.shields.io/github/license/thebeanogamer/hstsparser) ![Python 3.8.x](https://img.shields.io/badge/python-3.8.x-yellow.svg) ![PyPI](https://img.shields.io/pypi/v/hstsparser)
 
 HSTS Parser is a simple tool to parse Firefox and Chrome's HSTS databases into actually helpful forensic artifacts! You can read more about the research behind this tool and potential uses for it over on [my blog](https://blog.daniel-milnes.uk/hsts-for-forensics-you-can-run-but-you-cant)!
 
