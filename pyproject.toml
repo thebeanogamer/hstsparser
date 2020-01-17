@@ -5,6 +5,17 @@ description = "A tool to parse Firefox and Chrome HSTS databases into forensic a
 authors = ["Daniel Milnes <thebeanogamer@gmail.com>"]
 license = "MIT"
 readme = "README.md"
+homepage = "https://github.com/thebeanogamer/hstsparser"
+repository = "https://github.com/thebeanogamer/hstsparser"
+documentation = "https://github.com/thebeanogamer/hstsparser"
+keywords = ["chrome", "firefox", "dfir", "forensics", "hsts"]
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Programming Language :: Python :: 3.8",
+    "Topic :: Security",
+    "Topic :: Utilities"
+]
 
 [tool.poetry.dependencies]
 python = "^3.8"
