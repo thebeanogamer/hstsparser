@@ -1,5 +1,5 @@
 trigger:
-- master
+- refs/tags/v*
 
 pr: none
 
