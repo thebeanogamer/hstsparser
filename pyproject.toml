@@ -28,3 +28,6 @@ flake8-formatter-junit-xml = "^0.0.6"
 [build-system]
 requires = ["poetry>=0.12"]
 build-backend = "poetry.masonry.api"
+
+[tool.poetry.scripts]
+hstsparser = "hstsparser"
