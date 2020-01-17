@@ -29,9 +29,11 @@ Alternatively, if you're using Windows, you can use the executables on the [rele
 
 ## Usage
 
+All of the below documentation is written for the Python version rather than the standalone executable, but the commands will be the same.
+
 ```shell
 $ hstsparser -h
-usage: hstsparser.py [-h] [-w WORDLIST] (--firefox | --chrome) FILE
+usage: hstsparser [-h] [-w WORDLIST] (--firefox | --chrome) FILE
 
 Process HSTS databases
 
