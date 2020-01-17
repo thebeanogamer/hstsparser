@@ -23,9 +23,6 @@ jobs:
         script: '(Invoke-WebRequest -Uri https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py -UseBasicParsing).Content | python'
       displayName: Install Poetry
 
-    - script: '%USERPROFILE%/.poetry/bin/poetry config virtualenvs.create false'
-      displayName: Disable Poetry VirtualEnvs
-
     - script: '%USERPROFILE%/.poetry/bin/poetry install --no-interaction --no-ansi'
       displayName: Install project using Poetry
 
@@ -41,7 +38,7 @@ jobs:
     - task: PowerShell@2
       inputs:
         targetType: 'inline'
-        script: 'pyinstaller --onefile hstsparser.py'
+        script: '%USERPROFILE%/.poetry/bin/poetry run pyinstaller --onefile hstsparser.py'
       displayName: 'Create Executable'
 
     - task: GitHubRelease@1
