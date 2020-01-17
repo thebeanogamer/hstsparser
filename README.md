@@ -16,13 +16,13 @@ pip install hstsparser
 ### Poetry (Linux)
 ```bash
 curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
-poetry install
+poetry install --no-dev
 ```
 
 ### Poetry (Windows)
 ```powershell
 (Invoke-WebRequest -Uri https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py -UseBasicParsing).Content | python
-poetry install
+poetry install --no-dev
 ```
 
 Alternatively, if you're using Windows, you can use the executables on the [releases page](https://github.com/thebeanogamer/hstsparser/releases/latest) to not need to install anything at all.
