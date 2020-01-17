@@ -33,7 +33,7 @@ All of the below documentation is written for the Python version rather than the
 
 ```shell
 $ hstsparser -h
-usage: hstsparser [-h] [-w WORDLIST] (--firefox | --chrome) FILE
+usage: hstsparser [-h] [-w WORDLIST] [--csv CSV] (--firefox | --chrome) FILE
 
 Process HSTS databases
 
