@@ -4,7 +4,7 @@ import json
 import os
 import re
 import typing
-from argparse import ArgumentParser
+from argparse import ArgumentParser, Namespace
 from base64 import b64encode
 from hashlib import sha256
 
