@@ -35,7 +35,7 @@ jobs:
     - task: PowerShell@2
       inputs:
         targetType: 'inline'
-        script: '~/.poetry/bin/poetry publish --build -u $(PyPi.Username) -p $(PyPi.Password)'
+        script: '~/.poetry/bin/poetry.bat publish --build -u $(PyPi.Username) -p $(PyPi.Password)'
       displayName: Publish pip package with Poetry
       env:
         PyPi.Username: $(PyPi.Username)
@@ -72,7 +72,7 @@ jobs:
     - task: PowerShell@2
       inputs:
         targetType: 'inline'
-        script: '~/.poetry/bin/poetry run pyinstaller --onefile hstsparser.py'
+        script: '~/.poetry/bin/poetry.bat run pyinstaller --onefile hstsparser.py'
       displayName: 'Create Executable'
 
     - task: GitHubRelease@1
