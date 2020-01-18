@@ -57,7 +57,7 @@ def file_already_exists(parser: ArgumentParser, arg: str) -> typing.TextIO:
         return open(arg, "w", newline="")
 
 
-def print_if_no_args(args, database: list, field_names: list) -> None:
+def print_if_no_args(args: Namespace, database: list, field_names: list) -> None:
     """Print database if no output file has been specified"""
     if not args.csv_file:
         print_db(database, field_names)
@@ -65,7 +65,7 @@ def print_if_no_args(args, database: list, field_names: list) -> None:
         file_write(args, database, field_names)
 
 
-def file_write(args, database: list, field_names: list) -> None:
+def file_write(args: Namespace, database: list, field_names: list) -> None:
     """Write to a CSV file"""
     if args.csv_file:
         with args.csv_file as csvfile:
