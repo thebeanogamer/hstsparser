@@ -4,8 +4,45 @@ trigger:
 pr: none
 
 jobs:
-  - job: Publish
-    displayName: Publish
+  - job: PyPi
+    displayName: Publish to PyPi
+
+    pool:
+      vmImage: windows-latest
+
+    steps:
+    - task: UsePythonVersion@0
+      displayName: 'Use Python 3.8.x'
+      inputs:
+        versionSpec: 3.8.x
+        addToPath: true
+
+    - task: PowerShell@2
+      inputs:
+        targetType: 'inline'
+        script: '(Invoke-WebRequest -Uri https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py -UseBasicParsing).Content | python'
+      displayName: Install Poetry
+      
+    - task: PowerShell@2
+      inputs:
+        targetType: 'inline'
+        script: '%USERPROFILE%/.poetry/bin/poetry version $(git tag -l --points-at HEAD)'
+      displayName: Set Package Version
+
+    - script: '%USERPROFILE%/.poetry/bin/poetry install --no-interaction --no-ansi --no-dev'
+      displayName: Install project using Poetry
+
+    - task: PyPiRelease@0
+      inputs:
+        targetType: 'inline'
+        script: '%USERPROFILE%/.poetry/bin/poetry --build publish -u $(PyPi.Username) -p $(PyPi.Password)'
+      displayName: Publish pip package with Poetry
+      env:
+        PyPi.Username: $(PyPi.Username)
+        PyPi.Password: $(PyPi.Password)
+
+  - job: GitHub
+    displayName: Publish to GitHub
 
     pool:
       vmImage: windows-latest
@@ -31,15 +68,6 @@ jobs:
 
     - script: '%USERPROFILE%/.poetry/bin/poetry install --no-interaction --no-ansi'
       displayName: Install project using Poetry
-
-    - task: PyPiRelease@0
-      inputs:
-        targetType: 'inline'
-        script: '%USERPROFILE%/.poetry/bin/poetry --build publish -u $(PyPi.Username) -p $(PyPi.Password)'
-      displayName: Publish pip package with Poetry
-      env:
-        PyPi.Username: $(PyPi.Username)
-        PyPi.Password: $(PyPi.Password)
 
     - task: PowerShell@2
       inputs:
