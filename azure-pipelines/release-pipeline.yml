@@ -35,7 +35,7 @@ jobs:
     - task: PyPiRelease@0
       inputs:
         targetType: 'inline'
-        script: '%USERPROFILE%/.poetry/bin/poetry --build publish -u $(PyPi.Username) -p $(PyPi.Password)'
+        script: '%USERPROFILE%/.poetry/bin/poetry publish --build -u $(PyPi.Username) -p $(PyPi.Password)'
       displayName: Publish pip package with Poetry
       env:
         PyPi.Username: $(PyPi.Username)
@@ -81,4 +81,3 @@ jobs:
         gitHubConnection: 'github.com'
         tagPattern: '.*'
         assets: '$(System.DefaultWorkingDirectory)\dist\hstsparser.exe'
-
