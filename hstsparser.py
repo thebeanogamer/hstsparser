@@ -125,7 +125,9 @@ group.add_argument("--chrome", action="store_true", help="Process a Chrome datab
 
 
 def main() -> None:
-    """Entry point for command line alias."""
+    """
+    Entry point for command line alias.
+    """
     args = parser.parse_args()
 
     dirtydb = args.database_file.read()
