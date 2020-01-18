@@ -1,9 +1,21 @@
 [tool.poetry]
 name = "hstsparser"
 version = "0.1.0"
-description = ""
+description = "A tool to parse Firefox and Chrome HSTS databases into forensic artifacts."
 authors = ["Daniel Milnes <thebeanogamer@gmail.com>"]
 license = "MIT"
+readme = "README.md"
+homepage = "https://github.com/thebeanogamer/hstsparser"
+repository = "https://github.com/thebeanogamer/hstsparser"
+documentation = "https://github.com/thebeanogamer/hstsparser"
+keywords = ["chrome", "firefox", "dfir", "forensics", "hsts"]
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Programming Language :: Python :: 3.8",
+    "Topic :: Security",
+    "Topic :: Utilities"
+]
 
 [tool.poetry.dependencies]
 python = "^3.8"
@@ -28,3 +40,6 @@ flake8-formatter-junit-xml = "^0.0.6"
 [build-system]
 requires = ["poetry>=0.12"]
 build-backend = "poetry.masonry.api"
+
+[tool.poetry.scripts]
+hstsparser = "hstsparser:main"

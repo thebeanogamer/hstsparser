@@ -1,36 +1,42 @@
 # HSTS Parser
 
-[![Build Status](https://dev.azure.com/thebeanogamer/HSTSparser/_apis/build/status/Lint%20Pipeline?branchName=master)](https://dev.azure.com/thebeanogamer/HSTSparser/_build/latest?definitionId=2&branchName=master) [![Release Status](https://dev.azure.com/thebeanogamer/HSTSparser/_apis/build/status/Release%20Pipeline?branchName=master)](https://dev.azure.com/thebeanogamer/HSTSparser/_build/latest?definitionId=7&branchName=master) ![Licence](https://img.shields.io/github/license/thebeanogamer/hstsparser) ![Python 3.8.x](https://img.shields.io/badge/python-3.8.x-yellow.svg)
+[![Build Status](https://dev.azure.com/thebeanogamer/HSTSparser/_apis/build/status/Lint%20Pipeline?branchName=master)](https://dev.azure.com/thebeanogamer/HSTSparser/_build/latest?definitionId=2&branchName=master) [![Release Status](https://dev.azure.com/thebeanogamer/HSTSparser/_apis/build/status/Release%20Pipeline?branchName=master)](https://dev.azure.com/thebeanogamer/HSTSparser/_build/latest?definitionId=7&branchName=master) [![Licence](https://img.shields.io/github/license/thebeanogamer/hstsparser)](./LICENSE) ![Python 3.8.x](https://img.shields.io/badge/python-3.8.x-yellow.svg) [![PyPI](https://img.shields.io/pypi/v/hstsparser)](https://pypi.org/project/hstsparser)
 
 HSTS Parser is a simple tool to parse Firefox and Chrome's HSTS databases into actually helpful forensic artifacts! You can read more about the research behind this tool and potential uses for it over on [my blog](https://blog.daniel-milnes.uk/hsts-for-forensics-you-can-run-but-you-cant)!
 
 ## Installation
 
-Installing HSTS Parser is easy! Just run the below commands to install everything you need!
+HSTS Parser can be installed via pip, or with [Poetry](https://python-poetry.org/).
 
-### Linux
+### From PyPi
+
+```bash
+pip install hstsparser
+```
+
+### Poetry (Linux)
 
 ```bash
 curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
-poetry install
+poetry install --no-dev
 ```
 
-### Windows
+### Poetry (Windows)
 
 ```powershell
 (Invoke-WebRequest -Uri https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py -UseBasicParsing).Content | python
-poetry install
+poetry install --no-dev
 ```
 
 Alternatively, if you're using Windows, you can use the executables on the [releases page](https://github.com/thebeanogamer/hstsparser/releases/latest) to not need to install anything at all.
 
 ## Usage
 
-All of the below documentation is written for the Python version rather than the standalone, but the commands are the same, just replacing `poetry run python hstsparser.py` with the name of the executable.
+All of the below documentation is written for the Python version rather than the standalone executable, but the commands will be the same.
 
 ```shell
-$ poetry run python hstsparser.py -h
-usage: hstsparser.py [-h] [-w WORDLIST] [--csv CSV] (--firefox | --chrome) FILE
+$ hstsparser -h
+usage: hstsparser [-h] [-w WORDLIST] [--csv CSV] (--firefox | --chrome) FILE
 
 Process HSTS databases
 
@@ -50,19 +56,19 @@ optional arguments:
 #### Firefox
 
 ```shell
-poetry run python hstsparser.py --firefox SiteSecurityServiceState.txt
+hstsparser --firefox SiteSecurityServiceState.txt
 ```
 
 #### Chrome
 
 ```shell
-poetry run python hstsparser.py --chrome TransportSecurity
+hstsparser --chrome TransportSecurity
 ```
 
 #### Chrome with Wordlist
 
 ```shell
-poetry run python hstsparser.py -w wordlist.txt --chrome TransportSecurity
+hstsparser -w wordlist.txt --chrome TransportSecurity
 ```
 
 ## Screenshots
