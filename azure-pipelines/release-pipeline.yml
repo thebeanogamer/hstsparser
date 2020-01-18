@@ -26,7 +26,7 @@ jobs:
     - task: PowerShell@2
       inputs:
         targetType: 'inline'
-        script: '~/.poetry/bin/poetry version $(git tag -l --points-at HEAD)'
+        script: '~/.poetry/bin/poetry.bat version $(git tag -l --points-at HEAD)'
       displayName: Set Package Version
 
     - script: '%USERPROFILE%/.poetry/bin/poetry install --no-interaction --no-ansi --no-dev'
@@ -63,7 +63,7 @@ jobs:
     - task: PowerShell@2
       inputs:
         targetType: 'inline'
-        script: '~/.poetry/bin/poetry version $(git tag -l --points-at HEAD)'
+        script: '~/.poetry/bin/poetry.bat version $(git tag -l --points-at HEAD)'
       displayName: Set Package Version
 
     - script: '%USERPROFILE%/.poetry/bin/poetry install --no-interaction --no-ansi'
