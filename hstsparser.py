@@ -97,6 +97,7 @@ def date_round(date: datetime.datetime) -> datetime.datetime:
         minutes=date.minute % 10, seconds=date.second, microseconds=date.microsecond
     )
 
+
 def module() -> None:
     """
     Empty function called by Poetry
