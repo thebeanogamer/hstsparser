@@ -67,7 +67,7 @@ def file_already_exists(parser: ArgumentParser, arg: str) -> typing.TextIO:
         return open(arg, "w", newline="")
 
 
-def print_if_no_args(database: list, field_names: list) -> None:
+def print_if_no_args(args, database: list, field_names: list) -> None:
     """
     Print database if no output file has been specified
     """
@@ -154,6 +154,7 @@ def main() -> None:
                     record[3] = date_round(record[3])
                 database.append(record)
         print_if_no_args(
+            args,
             database,
             ["URL", "Visits", "Last Accessed", "Expiry", "Type", "Include Subdomains"],
         )
@@ -189,6 +190,7 @@ def main() -> None:
                 if len(i) == 4:
                     i.append("")
             print_if_no_args(
+                args,
                 database,
                 [
                     "Base64 URL Hash",
@@ -200,6 +202,7 @@ def main() -> None:
             )
         else:
             print_if_no_args(
+                args,
                 database,
                 ["Base64 URL Hash", "Expiry", "Include Subdomains", "Last Observed"],
             )
