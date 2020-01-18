@@ -74,10 +74,10 @@ def print_if_no_args(args, database: list, field_names: list) -> None:
     if not args.csv_file:
         print_db(database, field_names)
     else:
-        file_write(database, field_names)
+        file_write(args, database, field_names)
 
 
-def file_write(database: list, field_names: list) -> None:
+def file_write(args, database: list, field_names: list) -> None:
     """
     Write to a CSV file
     """
