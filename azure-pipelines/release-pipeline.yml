@@ -3,6 +3,9 @@ trigger:
 
 pr: none
 
+variables:
+  PIP_CACHE_DIR: $(Pipeline.Workspace)/.pip
+
 jobs:
   - job: PyPi
     displayName: Publish to PyPi
@@ -17,25 +20,34 @@ jobs:
         versionSpec: 3.8.x
         addToPath: true
 
+    - task: Cache@2
+      inputs:
+        key: 'python | "$(Agent.OS)" | poetry.lock'
+        restoreKeys: | 
+          python | "$(Agent.OS)"
+          python
+        path: $(PIP_CACHE_DIR)
+      displayName: Cache pip packages
+
     - task: PowerShell@2
       inputs:
         targetType: 'inline'
-        script: '(Invoke-WebRequest -Uri https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py -UseBasicParsing).Content | python'
+        script: pip install poetry
       displayName: Install Poetry
       
     - task: PowerShell@2
       inputs:
         targetType: 'inline'
-        script: '~/.poetry/bin/poetry.bat version $(git tag -l --points-at HEAD)'
+        script: 'poetry version $(git tag -l --points-at HEAD)'
       displayName: Set Package Version
 
-    - script: '%USERPROFILE%/.poetry/bin/poetry install --no-interaction --no-ansi --no-dev'
+    - script: 'poetry install --no-interaction --no-ansi --no-dev'
       displayName: Install project using Poetry
 
     - task: PowerShell@2
       inputs:
         targetType: 'inline'
-        script: '~/.poetry/bin/poetry.bat publish --build -u $(PyPi.Username) -p $(PyPi.Password)'
+        script: 'poetry publish --build -u $(PyPi.Username) -p $(PyPi.Password)'
       displayName: Publish pip package with Poetry
       env:
         PyPi.Username: $(PyPi.Username)
@@ -54,25 +66,34 @@ jobs:
         versionSpec: 3.8.x
         addToPath: true
 
+    - task: Cache@2
+      inputs:
+        key: 'python | "$(Agent.OS)" | poetry.lock'
+        restoreKeys: | 
+          python | "$(Agent.OS)"
+          python
+        path: $(PIP_CACHE_DIR)
+      displayName: Cache pip packages
+
     - task: PowerShell@2
       inputs:
         targetType: 'inline'
-        script: '(Invoke-WebRequest -Uri https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py -UseBasicParsing).Content | python'
+        script: 'pip install poetry'
       displayName: Install Poetry
       
     - task: PowerShell@2
       inputs:
         targetType: 'inline'
-        script: '~/.poetry/bin/poetry.bat version $(git tag -l --points-at HEAD)'
+        script: 'poetry version $(git tag -l --points-at HEAD)'
       displayName: Set Package Version
 
-    - script: '%USERPROFILE%/.poetry/bin/poetry install --no-interaction --no-ansi'
+    - script: 'poetry install --no-interaction --no-ansi'
       displayName: Install project using Poetry
 
     - task: PowerShell@2
       inputs:
         targetType: 'inline'
-        script: '~/.poetry/bin/poetry.bat run pyinstaller --onefile hstsparser.py'
+        script: 'poetry run pyinstaller --onefile hstsparser.py'
       displayName: 'Create Executable'
 
     - task: GitHubRelease@1

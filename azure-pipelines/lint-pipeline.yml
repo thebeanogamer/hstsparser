@@ -4,6 +4,9 @@ pr:
     include:
     - '*'
 
+variables:
+  PIP_CACHE_DIR: $(Pipeline.Workspace)/.pip
+
 jobs:
 - job: lint
   displayName: 'Lint'
@@ -18,13 +21,22 @@ jobs:
       versionSpec: '3.8.x'
       addToPath: true
 
-  - script: curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python
+  - task: Cache@2
+    inputs:
+      key: 'python | "$(Agent.OS)" | poetry.lock'
+      restoreKeys: | 
+        python | "$(Agent.OS)"
+        python
+      path: $(PIP_CACHE_DIR)
+    displayName: Cache pip packages
+
+  - script: pip install poetry
     displayName: Install Poetry
 
-  - script: $HOME/.poetry/bin/poetry config virtualenvs.create false
+  - script: poetry config virtualenvs.create false
     displayName: Disable Poetry VirtualEnvs
 
-  - script: $HOME/.poetry/bin/poetry install --no-interaction --no-ansi
+  - script: poetry install --no-interaction --no-ansi
     displayName: Install project using Poetry
 
   - script: python -m flake8 .
