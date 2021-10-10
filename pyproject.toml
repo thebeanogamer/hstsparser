@@ -23,7 +23,7 @@ argparse = "^1.4"
 PTable = "^0.9.2"
 
 [tool.poetry.dev-dependencies]
-flake8 = "=3.8.3"
+flake8 = "=3.9.2"
 flake8-bandit = "=2.1.2"
 flake8-bugbear = "=21.9.2"
 flake8-import-order = "=0.18.1"
