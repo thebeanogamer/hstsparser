@@ -40,7 +40,7 @@ jobs:
           PIP_CACHE_DIR: ~/.pip
 
       - name: Build Executable
-        run: C:\Users\runneradmin\.local\bin\poetry run pyinstaller --onefile --exclude-module _bootlocale hstsparser.py
+        run: C:\Users\runneradmin\.local\bin\poetry run pyinstaller --onefile hstsparser.py
 
       - name: Print Helptext to Validate Executable
         run: dist\hstsparser.exe
