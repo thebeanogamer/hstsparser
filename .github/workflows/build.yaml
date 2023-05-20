@@ -31,7 +31,7 @@ jobs:
         uses: snok/install-poetry@v1
         with:
           version: 1.5.0
-          virtualenvs-create: true
+          virtualenvs-create: false
           installer-parallel: true
 
       - name: Install Python Dependencies
