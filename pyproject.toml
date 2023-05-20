@@ -2,7 +2,7 @@
 name = "hstsparser"
 version = "0.1.0"
 description = "A tool to parse Firefox and Chrome HSTS databases into forensic artifacts."
-authors = ["Daniel Milnes <thebeanogamer@gmail.com>"]
+authors = ["Daniel Milnes <daniel@daniel-milnes.uk>"]
 license = "MIT"
 readme = "README.md"
 homepage = "https://github.com/thebeanogamer/hstsparser"
