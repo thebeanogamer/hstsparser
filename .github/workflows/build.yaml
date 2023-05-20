@@ -35,12 +35,12 @@ jobs:
           installer-parallel: true
 
       - name: Install Python Dependencies
-        run: poetry install --no-interaction --no-ansi
+        run: C:\Users\runneradmin\.local\bin\poetry install --no-interaction --no-ansi
         env:
           PIP_CACHE_DIR: ~/.pip
 
       - name: Build Executable
-        run: pyinstaller --onefile --exclude-module _bootlocale hstsparser.py
+        run: C:\Users\runneradmin\.local\bin\poetry run pyinstaller --onefile --exclude-module _bootlocale hstsparser.py
 
       - name: Upload Executable
         uses: actions/upload-artifact@v3
