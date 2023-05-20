@@ -38,7 +38,7 @@ flake8-formatter-junit-xml = "^0.0.6"
 hstsparser = "hstsparser:main"
 
 [tool.poetry.group.windows.dependencies]
-pyinstaller = "^3.6"
+pyinstaller = "^5.11.0"
 pywin32-ctypes = "^0.2.0"
 pefile = "^2023.2.7"
 
