@@ -1,10 +1,10 @@
 ---
-name: Lint Codebase
+name: Build Releases
 on: push
 
 jobs:
-  lint:
-    runs-on: ubuntu-latest
+  windows:
+    runs-on: windows-latest
 
     steps:
       - name: Checkout repository
@@ -35,15 +35,18 @@ jobs:
           installer-parallel: true
 
       - name: Install Python Dependencies
-        run: poetry install --no-interaction --no-ansi
+        run: C:\Users\runneradmin\.local\bin\poetry install --no-interaction --no-ansi
         env:
           PIP_CACHE_DIR: ~/.pip
 
-      - name: Run Linting Checks
-        run: python -m flake8 . | tee flake8.xml
+      - name: Build Executable
+        run: C:\Users\runneradmin\.local\bin\poetry run pyinstaller --onefile --additional-hooks-dir hooks hstsparser.py
 
-      - name: Publish Linting Results
-        if: always()
-        uses: mikepenz/action-junit-report@v3
+      - name: Print Helptext to Validate Executable
+        run: dist\hstsparser.exe -h
+
+      - name: Upload Executable
+        uses: actions/upload-artifact@v3
         with:
-          report_paths: '**/flake8.xml'
+          name: hstsparser.exe
+          path: dist/hstsparser.exe
