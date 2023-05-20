@@ -43,7 +43,7 @@ jobs:
         run: C:\Users\runneradmin\.local\bin\poetry run pyinstaller --onefile --additional-hooks-dir hooks hstsparser.py
 
       - name: Print Helptext to Validate Executable
-        run: dist\hstsparser.exe
+        run: dist\hstsparser.exe -h
 
       - name: Upload Executable
         uses: actions/upload-artifact@v3
