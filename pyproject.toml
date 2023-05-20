@@ -12,13 +12,16 @@ keywords = ["chrome", "firefox", "dfir", "forensics", "hsts"]
 classifiers = [
     "License :: OSI Approved :: MIT License",
     "Natural Language :: English",
-    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
     "Topic :: Security",
     "Topic :: Utilities"
 ]
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.9"
 PTable = "^0.9.2"
 
 [tool.poetry.dev-dependencies]
