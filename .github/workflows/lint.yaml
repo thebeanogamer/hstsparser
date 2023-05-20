@@ -1,0 +1,48 @@
+---
+name: Lint Codebase
+on: push
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.11'
+
+      - name: Cache Python modules
+        uses: actions/cache@v1
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: ~/.pip
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/poetry.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+
+      - name: Install Poetry
+        run: curl -sSL https://install.python-poetry.org | python3 -
+
+      - name: Disable Virtualenvs
+        run: $HOME/.local/bin/poetry config virtualenvs.create false
+
+      - name: Install Python Dependencies
+        run: $HOME/.local/bin/poetry install --no-interaction --no-ansi
+        env:
+          PIP_CACHE_DIR: ~/.pip
+
+      - name: Run Linting Checks
+        run: python -m flake8 . | tee flake8.xml
+
+      - name: Publish Linting Results
+        if: always()
+        uses: mikepenz/action-junit-report@v3
+        with:
+          report_paths: '**/flake8.xml'
