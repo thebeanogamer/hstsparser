@@ -27,11 +27,12 @@ jobs:
             ${{ runner.os }}-build-
             ${{ runner.os }}-
 
-      - name: Install Poetry
-        run: curl -sSL https://install.python-poetry.org | python3 -
-
-      - name: Disable Virtualenvs
-        run: poetry config virtualenvs.create false
+      - name: Install and configure Poetry
+        uses: snok/install-poetry@v1
+        with:
+          version: 1.5.0
+          virtualenvs-create: false
+          installer-parallel: true
 
       - name: Install Python Dependencies
         run: poetry install --no-interaction --no-ansi

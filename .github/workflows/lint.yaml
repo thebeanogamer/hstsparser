@@ -27,14 +27,15 @@ jobs:
             ${{ runner.os }}-build-
             ${{ runner.os }}-
 
-      - name: Install Poetry
-        run: curl -sSL https://install.python-poetry.org | python3 -
-
-      - name: Disable Virtualenvs
-        run: $HOME/.local/bin/poetry config virtualenvs.create false
+      - name: Install and configure Poetry
+        uses: snok/install-poetry@v1
+        with:
+          version: 1.5.0
+          virtualenvs-create: false
+          installer-parallel: true
 
       - name: Install Python Dependencies
-        run: $HOME/.local/bin/poetry install --no-interaction --no-ansi
+        run: poetry install --no-interaction --no-ansi
         env:
           PIP_CACHE_DIR: ~/.pip
 
