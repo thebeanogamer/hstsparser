@@ -41,6 +41,9 @@ MANIFEST
 *.manifest
 *.spec
 
+# Allow our RPM spec
+!hstsparser.spec
+
 # Installer logs
 pip-log.txt
 pip-delete-this-directory.txt
@@ -143,3 +146,8 @@ wordlist.txt
 .venv
 
 flake8.xml
+
+
+rpmbuild
+rpms
+*.tar.gz
