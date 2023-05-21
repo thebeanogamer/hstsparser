@@ -1,5 +1,5 @@
 Name:           hstsparser
-Version:        1.1.6
+Version:        1.1.7
 Release:        1%{?dist}
 Summary:        HSTS Digital Forensics parser
 
