@@ -35,7 +35,7 @@ jobs:
           installer-parallel: true
 
       - name: Install Python Dependencies
-        run: C:\Users\runneradmin\.local\bin\poetry install --no-interaction --no-ansi
+        run: C:\Users\runneradmin\.local\bin\poetry install --no-interaction --no-ansi --without=dev
         env:
           PIP_CACHE_DIR: ~/.pip
 
