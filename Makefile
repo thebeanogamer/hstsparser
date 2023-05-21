@@ -5,7 +5,13 @@ tar:
 	mkdir -p rpmbuild/SOURCES/
 	tar --exclude='./rpmbuild' --transform 's,^,hstsparser-$(VERSION)/,' -czvhf rpmbuild/SOURCES/$(VERSION).tar.gz .
 
-rpm: tar
+srpm: tar
+	rpmbuild -bs --define "_topdir `pwd`/rpmbuild" ./hstsparser.spec
+ifdef outdir
+	cp ./rpmbuild/SRPMS/* $(outdir)
+endif
+
+rpm: srpm
 	sudo dnf install -y python3-poetry
 	sudo dnf builddep -y hstsparser.spec
 	rpmbuild -br --define "_topdir `pwd`/rpmbuild" ./hstsparser.spec
