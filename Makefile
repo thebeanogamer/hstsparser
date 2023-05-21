@@ -7,4 +7,4 @@ tar:
 
 rpm: tar
 	sudo dnf builddep -y hstsparser.spec
-	rpmbuild -ba ./hstsparser.spec
+	rpmbuild -ba --define "_topdir `pwd`/rpmbuild" ./hstsparser.spec
