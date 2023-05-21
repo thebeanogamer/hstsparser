@@ -489,21 +489,16 @@ files = [
 
 [[package]]
 name = "prettytable"
-version = "3.7.0"
-description = "A simple Python library for easily displaying tabular data in a visually appealing ASCII table format"
+version = "0.7.2"
+description = "A simple Python library for easily displaying tabular data in a visually appealing ASCII table format."
 category = "main"
 optional = false
-python-versions = ">=3.7"
+python-versions = "*"
 files = [
-    {file = "prettytable-3.7.0-py3-none-any.whl", hash = "sha256:f4aaf2ed6e6062a82fd2e6e5289bbbe705ec2788fe401a3a1f62a1cea55526d2"},
-    {file = "prettytable-3.7.0.tar.gz", hash = "sha256:ef8334ee40b7ec721651fc4d37ecc7bb2ef55fde5098d994438f0dfdaa385c0c"},
+    {file = "prettytable-0.7.2.tar.bz2", hash = "sha256:853c116513625c738dc3ce1aee148b5b5757a86727e67eff6502c7ca59d43c36"},
+    {file = "prettytable-0.7.2.tar.gz", hash = "sha256:2d5460dc9db74a32bcc8f9f67de68b2c4f4d2f01fa3bd518764c69156d9cacd9"},
+    {file = "prettytable-0.7.2.zip", hash = "sha256:a53da3b43d7a5c229b5e3ca2892ef982c46b7923b51e98f0db49956531211c4f"},
 ]
-
-[package.dependencies]
-wcwidth = "*"
-
-[package.extras]
-tests = ["pytest", "pytest-cov", "pytest-lazy-fixture"]
 
 [[package]]
 name = "pycodestyle"
@@ -883,19 +878,7 @@ secure = ["certifi", "cryptography (>=1.9)", "idna (>=2.0.0)", "pyopenssl (>=17.
 socks = ["pysocks (>=1.5.6,!=1.5.7,<2.0)"]
 zstd = ["zstandard (>=0.18.0)"]
 
-[[package]]
-name = "wcwidth"
-version = "0.2.6"
-description = "Measures the displayed width of unicode strings in a terminal"
-category = "main"
-optional = false
-python-versions = "*"
-files = [
-    {file = "wcwidth-0.2.6-py2.py3-none-any.whl", hash = "sha256:795b138f6875577cd91bba52baf9e445cd5118fd32723b460e30a0af30ea230e"},
-    {file = "wcwidth-0.2.6.tar.gz", hash = "sha256:a5220780a404dbe3353789870978e472cfe477761f06ee55077256e509b156d0"},
-]
-
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.9,<3.12"
-content-hash = "a607aa23358d10b612cc5a77ae904e3cd3b485d7059931a7b0eb9028115147de"
+content-hash = "1d772e203f7077d562fbf87d90ebe7991873aa27964d71d53807d2ec23350a54"
