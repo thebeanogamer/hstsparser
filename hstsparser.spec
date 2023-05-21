@@ -10,7 +10,8 @@ Source:         %{url}/archive/refs/tags/%{version}.tar.gz
 BuildArch:      noarch
 BuildRequires:  python3-devel
 
-%description Parse Firefox and Chrome HSTS databases into Digital Forensics artifacts
+%description %{expand:
+Parse Firefox and Chrome HSTS databases into Digital Forensics artifacts}
 
 %prep
 %autosetup -p1 -n hstsparser-%{version}
