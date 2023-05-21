@@ -28,3 +28,44 @@ jobs:
           generate_release_notes: true
           files: |
             hstsparser.exe
+
+  pypi:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.11'
+
+      - name: Cache Python modules
+        uses: actions/cache@v1
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: ~/.pip
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/poetry.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+
+      - name: Install and configure Poetry
+        uses: snok/install-poetry@v1
+        with:
+          version: 1.5.0
+          virtualenvs-create: false
+          installer-parallel: true
+
+      - name: Install Python Dependencies
+        run: poetry install --no-interaction --no-ansi --without=dev
+        env:
+          PIP_CACHE_DIR: ~/.pip
+
+      - name: Update Package Version
+        run: poetry version ${{inputs.version}}
+
+      - name: Publish to PyPi
+        run: poetry publish --build -u ${{secrets.pypi_username}} -p ${{secrets.pypi_password}}
