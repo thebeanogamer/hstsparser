@@ -6,5 +6,5 @@ tar:
 	tar --exclude='./rpmbuild' --transform 's,^,hstsparser-$(VERSION)/,' -czvhf rpmbuild/SOURCES/$(VERSION).tar.gz .
 
 rpm: tar
-	sudo dnf builddep hstsparser.spec
+	sudo dnf builddep -y hstsparser.spec
 	rpmbuild -ba ./hstsparser.spec
