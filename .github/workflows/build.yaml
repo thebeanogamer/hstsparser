@@ -50,3 +50,23 @@ jobs:
         with:
           name: hstsparser.exe
           path: dist/hstsparser.exe
+
+  rpm:
+    runs-on: ubuntu-latest
+    container: docker.io/library/fedora:38
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: dnf install rpmdevtools rpm-build make tar -y
+
+      - name: Build RPM
+        run: make rpm
+
+      - name: Upload RPM
+        uses: actions/upload-artifact@v3
+        with:
+          name: hstsparser-1.1.6-1.fc38.noarch.rpm
+          path: rpmbuild/RPMS/noarch/hstsparser-1.1.6-1.fc38.noarch.rpm
