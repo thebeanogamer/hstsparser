@@ -11,7 +11,7 @@ ifdef outdir
 	cp ./rpmbuild/SRPMS/* $(outdir)
 endif
 
-rpm: srpm
+rpm:
 	sudo dnf install -y python3-poetry
 	sudo dnf builddep -y hstsparser.spec
 	rpmbuild -br --define "_topdir `pwd`/rpmbuild" ./hstsparser.spec
