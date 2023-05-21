@@ -20,7 +20,6 @@ jobs:
           commit: ${{github.event.pull_request.head.sha}}
           name: hstsparser.exe
 
-
       - name: Create Draft GitHub Release
         uses: softprops/action-gh-release@v1
         with:
