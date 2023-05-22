@@ -110,7 +110,10 @@ group = parser.add_mutually_exclusive_group(required=True)
 group.add_argument("--firefox", action="store_true", help="Process a Firefox database")
 group.add_argument("--chrome", action="store_true", help="Process a Chrome database")
 
-__version__ = importlib.metadata.version("hstsparser")
+try:
+    __version__ = importlib.metadata.version("hstsparser")
+except importlib.metadata.PackageNotFoundError:
+    __version__ = "0.0.1"
 
 parser.add_argument('--version', action='version', version=f'%(prog)s {__version__}')
 
