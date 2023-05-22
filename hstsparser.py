@@ -6,6 +6,7 @@ import json
 import os
 import re
 import typing
+import importlib.metadata
 from argparse import ArgumentParser, Namespace
 from base64 import b64encode
 from hashlib import sha256
@@ -84,7 +85,7 @@ def date_round(date: datetime.datetime) -> datetime.datetime:
     )
 
 
-parser = ArgumentParser(description="Process HSTS databases")
+parser = ArgumentParser(prog="hstsparser", description="Process HSTS databases")
 parser.add_argument(
     dest="database_file",
     help="The path to the database to be processed",
@@ -109,6 +110,9 @@ group = parser.add_mutually_exclusive_group(required=True)
 group.add_argument("--firefox", action="store_true", help="Process a Firefox database")
 group.add_argument("--chrome", action="store_true", help="Process a Chrome database")
 
+__version__ = importlib.metadata.version("hstsparser")
+
+parser.add_argument('--version', action='version', version=f'%(prog)s {__version__}')
 
 def main() -> None:
     """Entry point for command line alias."""
