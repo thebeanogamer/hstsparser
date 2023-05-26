@@ -21,8 +21,7 @@ rpm: tar
 	rpmbuild -ba --define "_topdir `pwd`/rpmbuild" ./hstsparser.spec
 
 mock: srpm
-	mock -r fedora-38-x86_64 .//rpmbuild/SRPMS/hstsparser-$(VERSION)-1.fc38.src.rpm
-
+	mock -r fedora-38-x86_64 ./rpmbuild/SRPMS/hstsparser-$(VERSION)-1.fc38.src.rpm
 
 clean:
 	rm -rf rpmbuild
