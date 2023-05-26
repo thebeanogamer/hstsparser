@@ -2,6 +2,7 @@ Name:           hstsparser
 Version:        1.1.7
 Release:        1%{?dist}
 Summary:        HSTS Digital Forensics parser
+Group:          Applications/Engineering
 
 License:        MIT
 URL:            https://github.com/thebeanogamer/hstsparser
