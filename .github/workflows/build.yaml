@@ -60,10 +60,10 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Install dependencies
-        run: dnf install rpmdevtools rpm-build make tar dnf-plugins-core mock -y
+        run: dnf install rpmdevtools rpm-build make tar dnf-plugins-core -y
 
       - name: Build RPM
-        run: make mock
+        run: make rpm
       
       - name: Upload SRPM
         uses: actions/upload-artifact@v3
