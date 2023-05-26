@@ -12,11 +12,10 @@ ifdef outdir
 endif
 
 rpm: tar
-	sudo dnf builddep -y hstsparser.spec
-	rpmbuild -br --define "_topdir `pwd`/rpmbuild" ./hstsparser.spec
-	sudo dnf builddep -y rpmbuild/SRPMS/hstsparser*buildreqs.nosrc.rpm
-	rpmbuild -br --define "_topdir `pwd`/rpmbuild" ./hstsparser.spec
-	sudo dnf builddep -y rpmbuild/SRPMS/hstsparser*buildreqs.nosrc.rpm
+	sudo dnf builddep --setopt=install_weak_deps=False -y hstsparser.spec
+	# rpmbuild -bd returns 1 even though it's doing what we asked for
+	rpmbuild -bd --define "_topdir `pwd`/rpmbuild" ./hstsparser.spec || true
+	ls -d rpmbuild/SRPMS/* | grep buildreqs | xargs -r sudo dnf builddep --setopt=install_weak_deps=False -y
 	rpmbuild -ba --define "_topdir `pwd`/rpmbuild" ./hstsparser.spec
 
 mock: srpm
@@ -26,4 +25,4 @@ clean:
 	rm -rf rpmbuild
 
 fakeci:
-	podman run -tv .:/repo:z fedora:38 sh -c "dnf install rpmdevtools rpm-build make tar dnf-plugins-core mock -y && cd /repo && make rpm"
+	podman run -tv .:/repo:z fedora:38 sh -c "dnf install rpmdevtools rpm-build make tar dnf-plugins-core -y && cd /repo && make rpm"

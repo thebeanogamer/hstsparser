@@ -11,6 +11,7 @@ Source:         %{url}/archive/refs/tags/%{version}.tar.gz
 BuildArch:      noarch
 BuildRequires:  python3-devel
 BuildRequires:  python3dist(poetry)
+BuildRequires:  python3dist(tox-current-env)
 
 %description %{expand:
 Parse Firefox and Chrome HSTS databases into Digital Forensics artifacts}
