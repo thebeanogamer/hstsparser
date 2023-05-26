@@ -16,4 +16,6 @@ rpm: tar
 	sudo dnf builddep -y hstsparser.spec
 	rpmbuild -br --define "_topdir `pwd`/rpmbuild" ./hstsparser.spec
 	sudo dnf builddep -y rpmbuild/SRPMS/hstsparser*buildreqs.nosrc.rpm
+	rpmbuild -br --define "_topdir `pwd`/rpmbuild" ./hstsparser.spec
+	sudo dnf builddep -y rpmbuild/SRPMS/hstsparser*buildreqs.nosrc.rpm
 	rpmbuild -ba --define "_topdir `pwd`/rpmbuild" ./hstsparser.spec
