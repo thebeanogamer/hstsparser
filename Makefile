@@ -22,3 +22,7 @@ rpm: tar
 
 mock: srpm
 	mock -r fedora-38-x86_64 .//rpmbuild/SRPMS/hstsparser-$(VERSION)-1.fc38.src.rpm
+
+
+clean:
+	rm -rf rpmbuild
