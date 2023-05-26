@@ -12,7 +12,6 @@ ifdef outdir
 endif
 
 rpm: tar
-	sudo dnf install -y python3-poetry
 	sudo dnf builddep -y hstsparser.spec
 	rpmbuild -br --define "_topdir `pwd`/rpmbuild" ./hstsparser.spec
 	sudo dnf builddep -y rpmbuild/SRPMS/hstsparser*buildreqs.nosrc.rpm
@@ -25,3 +24,6 @@ mock: srpm
 
 clean:
 	rm -rf rpmbuild
+
+fakeci:
+	podman run -tv .:/repo:z fedora:38 sh -c "dnf install rpmdevtools rpm-build make tar dnf-plugins-core mock -y && cd /repo && make rpm"
