@@ -70,9 +70,11 @@ jobs:
         with:
           name: hstsparser-1.1.7-1.fc38.src.rpm
           path: rpmbuild/SRPMS/hstsparser-1.1.7-1.fc38.src.rpm
+          if-no-files-found: error
 
       - name: Upload RPM
         uses: actions/upload-artifact@v3
         with:
           name: hstsparser-1.1.7-1.fc38.noarch.rpm
           path: rpmbuild/RPMS/noarch/hstsparser-1.1.7-1.fc38.noarch.rpm
+          if-no-files-found: error
