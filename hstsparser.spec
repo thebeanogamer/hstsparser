@@ -1,6 +1,6 @@
 Name:           hstsparser
 Version:        1.1.8
-Release:        1%{?dist}
+Release:        8%{?dist}
 Summary:        HSTS Digital Forensics parser
 Group:          Applications/Engineering
 
