@@ -71,4 +71,4 @@ hstsparser -w wordlist.txt --chrome TransportSecurity
 
 - [My Blog Post](https://blog.daniel-milnes.uk/hsts-for-forensics-you-can-run-but-you-cant)
 - [MDN - HSTS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security)
-- [Chromium - HSTS](https://www.chromium.org/sts)
+- [Chromium - HSTS](https://www.chromium.org/hsts)
