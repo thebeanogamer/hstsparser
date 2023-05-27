@@ -6,15 +6,28 @@ HSTS Parser is a simple tool to parse Firefox and Chrome's HSTS databases into a
 
 ## Installation
 
-HSTS Parser can be installed via pip, or with [Poetry](https://python-poetry.org/).
+HSTS Parser can be installed via pip, or as a native executable.
 
 ### From PyPi
+
+If you already have Python installed, you can install HSTS Parser using pip.
 
 ```bash
 pip install hstsparser
 ```
 
-Alternatively, if you're using Windows, you can use the executables on the [releases page](https://github.com/thebeanogamer/hstsparser/releases/latest) to not need to install anything at all.
+### On Fedora
+
+HSTS Parser is available through Fedora COPR for Fedora 38+.
+
+```bash
+dnf copr enable thebeanogamer/hstsparser
+dnf install hstsparser
+```
+
+### On Windows
+
+Windows binaries are published by GitHub Actions CI for each release of HSTS Parser. You can download these on the [releases page](https://github.com/thebeanogamer/hstsparser/releases/latest).
 
 ## Usage
 
