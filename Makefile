@@ -3,7 +3,7 @@ VERSION := $(shell rpmspec -q hstsparser.spec --queryformat='%{version}')
 
 tar:
 	mkdir -p rpmbuild/SOURCES/
-	tar --exclude='./rpmbuild' --exclude='./review-hstsparser' --transform 's,^,hstsparser-$(VERSION)/,' -czvhf rpmbuild/SOURCES/$(VERSION).tar.gz .
+	tar --exclude='./rpmbuild' --exclude='./review-hstsparser' --transform 's,^,hstsparser-$(VERSION)/,' -czvhf rpmbuild/SOURCES/hstsparser-$(VERSION).tar.gz .
 
 srpm: tar
 	rpmbuild -bs --define "_topdir `pwd`/rpmbuild" ./hstsparser.spec

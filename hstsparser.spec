@@ -6,7 +6,7 @@ Group:          Applications/Engineering
 
 License:        MIT
 URL:            https://github.com/thebeanogamer/hstsparser
-Source:         %{url}/archive/refs/tags/%{version}.tar.gz
+Source:         %{url}/archive/%{version}/hstsparser-%{version}.tar.gz
 
 BuildArch:      noarch
 BuildRequires:  python3-devel
