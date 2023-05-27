@@ -12,6 +12,7 @@ BuildArch:      noarch
 BuildRequires:  python3-devel
 BuildRequires:  python3dist(poetry)
 BuildRequires:  python3dist(tox-current-env)
+BuildRequires:  help2man
 
 %description %{expand:
 Parse Firefox and Chrome HSTS databases into Digital Forensics artifacts}
@@ -27,13 +28,17 @@ Parse Firefox and Chrome HSTS databases into Digital Forensics artifacts}
 %build
 %pyproject_wheel
 
-
 %install
 %pyproject_install
-
-
 %pyproject_save_files hstsparser
+mkdir -p %{buildroot}%{_mandir}/man1/
 
+# Fix command name in manpage
+ln -s hstsparser.py hstsparser
+
+# This runs outside the venv, so --version will return the default
+help2man -N ./hstsparser -o %{buildroot}%{_mandir}/man1/hstsparser.1 --version-string='%{version}'
+rm -f hstsparser
 
 %check
 %tox
@@ -41,6 +46,7 @@ Parse Firefox and Chrome HSTS databases into Digital Forensics artifacts}
 %files -f %{pyproject_files}
 %doc README.md
 %{_bindir}/hstsparser
+%{_mandir}/man1/hstsparser.1*
 
 %changelog
 %autochangelog
