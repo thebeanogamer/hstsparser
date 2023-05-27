@@ -151,3 +151,6 @@ flake8.xml
 rpmbuild
 rpms
 *.tar.gz
+
+review-hstsparser/
+*.rpm

@@ -3,7 +3,7 @@ VERSION := $(shell rpmspec -q hstsparser.spec --queryformat='%{version}')
 
 tar:
 	mkdir -p rpmbuild/SOURCES/
-	tar --exclude='./rpmbuild' --transform 's,^,hstsparser-$(VERSION)/,' -czvhf rpmbuild/SOURCES/$(VERSION).tar.gz .
+	tar --exclude='./rpmbuild' --exclude='./review-hstsparser' --transform 's,^,hstsparser-$(VERSION)/,' -czvhf rpmbuild/SOURCES/$(VERSION).tar.gz .
 
 srpm: tar
 	rpmbuild -bs --define "_topdir `pwd`/rpmbuild" ./hstsparser.spec
@@ -26,3 +26,9 @@ clean:
 
 fakeci:
 	podman run -tv .:/repo:z fedora:38 sh -c "dnf install rpmdevtools rpm-build make tar dnf-plugins-core -y && cd /repo && make rpm"
+
+fedora-review: clean srpm
+	rm -rf review-hstsparser
+	cp ./rpmbuild/SRPMS/*.src.rpm .
+	fedora-review -n hstsparser
+	rm -f *.rpm
