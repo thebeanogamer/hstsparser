@@ -2,11 +2,11 @@
 
 import csv
 import datetime
+import importlib.metadata
 import json
 import os
 import re
 import typing
-import importlib.metadata
 from argparse import ArgumentParser, Namespace
 from base64 import b64encode
 from hashlib import sha256
@@ -116,6 +116,7 @@ except importlib.metadata.PackageNotFoundError:
     __version__ = "0.0.1"
 
 parser.add_argument('--version', action='version', version=f'%(prog)s {__version__}')
+
 
 def main() -> None:
     """Entry point for command line alias."""
