@@ -20,6 +20,14 @@ jobs:
           commit: ${{github.event.pull_request.head.sha}}
           name: hstsparser.exe
 
+      - name: Download RPM
+        id: download-artifact
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          workflow: build.yaml
+          commit: ${{github.event.pull_request.head.sha}}
+          name: hstsparser-1.1.8-2.fc38.noarch.rpm
+
       - name: Create Draft GitHub Release
         uses: softprops/action-gh-release@v1
         with:
@@ -28,6 +36,7 @@ jobs:
           generate_release_notes: true
           files: |
             hstsparser.exe
+            hstsparser-1.1.8-2.fc38.noarch.rpm
 
   pypi:
     runs-on: ubuntu-latest
