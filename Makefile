@@ -28,6 +28,7 @@ fakeci:
 	podman run -tv .:/repo:z fedora:38 sh -c "dnf install rpmdevtools rpm-build make tar dnf-plugins-core -y && cd /repo && make rpm"
 
 fedora-review: clean srpm
+	rpm -q fedora-review || sudo dnf install fedora-review -y
 	rm -rf review-hstsparser
 	cp ./rpmbuild/SRPMS/*.src.rpm .
 	fedora-review -n hstsparser
