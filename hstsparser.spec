@@ -34,7 +34,7 @@ Parse Firefox and Chrome HSTS databases into Digital Forensics artifacts}
 mkdir -p %{buildroot}%{_mandir}/man1/
 
 # This runs outside the venv, so --version will return the default
-help2man -N %{_bindir}/hstsparser -o %{buildroot}%{_mandir}/man1/hstsparser.1 --version-string='%{version}'
+help2man -N %{buildroot}%{_bindir}/hstsparser -o %{buildroot}%{_mandir}/man1/hstsparser.1 --version-string='%{version}'
 
 %check
 %tox
