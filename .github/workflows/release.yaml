@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Download Windows Release
-        id: download-artifact
+        id: download-windows-artifact
         uses: dawidd6/action-download-artifact@v2
         with:
           workflow: build.yaml
@@ -21,7 +21,7 @@ jobs:
           name: hstsparser.exe
 
       - name: Download RPM
-        id: download-artifact
+        id: download-rpm-artifact
         uses: dawidd6/action-download-artifact@v2
         with:
           workflow: build.yaml
@@ -42,7 +42,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Setup Python
         uses: actions/setup-python@v2
