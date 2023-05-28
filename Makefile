@@ -1,5 +1,6 @@
 # Override the upstream tarball for testing
 VERSION := $(shell rpmspec -q hstsparser.spec --queryformat='%{version}')
+RELEASE := $(shell rpmspec -q hstsparser.spec --queryformat='%{release}')
 
 tar:
 	mkdir -p rpmbuild/SOURCES/
@@ -19,7 +20,7 @@ rpm: tar
 	rpmbuild -ba --define "_topdir `pwd`/rpmbuild" ./hstsparser.spec
 
 mock: srpm
-	mock -r fedora-38-x86_64 ./rpmbuild/SRPMS/hstsparser-$(VERSION)-1.fc38.src.rpm
+	mock -r fedora-38-x86_64 ./rpmbuild/SRPMS/hstsparser-$(VERSION)-$(RELEASE).src.rpm
 
 clean:
 	rm -rf rpmbuild fedora-review
