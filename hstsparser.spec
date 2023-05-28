@@ -45,6 +45,7 @@ rm -f hstsparser
 
 %files -f %{pyproject_files}
 %doc README.md
+%license LICENSE
 %{_bindir}/hstsparser
 %{_mandir}/man1/hstsparser.1*
 
