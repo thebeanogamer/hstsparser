@@ -73,13 +73,13 @@ jobs:
       - name: Upload SRPM
         uses: actions/upload-artifact@v3
         with:
-          name: hstsparser-1.1.8-2.fc38.src.rpm
-          path: rpmbuild/SRPMS/hstsparser-1.1.8-2.fc38.src.rpm
+          name: hstsparser-1.1.8-3.fc38.src.rpm
+          path: rpmbuild/SRPMS/hstsparser-1.1.8-3.fc38.src.rpm
           if-no-files-found: error
 
       - name: Upload RPM
         uses: actions/upload-artifact@v3
         with:
-          name: hstsparser-1.1.8-2.fc38.noarch.rpm
-          path: rpmbuild/RPMS/noarch/hstsparser-1.1.8-2.fc38.noarch.rpm
+          name: hstsparser-1.1.8-3.fc38.noarch.rpm
+          path: rpmbuild/RPMS/noarch/hstsparser-1.1.8-3.fc38.noarch.rpm
           if-no-files-found: error
