@@ -14,6 +14,8 @@ BuildRequires:  python3dist(poetry)
 BuildRequires:  python3dist(tox-current-env)
 BuildRequires:  help2man
 
+%py_provides python3-hstsparser
+
 %description %{expand:
 Parse Firefox and Chrome HSTS databases into Digital Forensics artifacts}
 
