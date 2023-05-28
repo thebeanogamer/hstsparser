@@ -44,6 +44,7 @@ rm -f hstsparser
 
 %check
 %tox
+%pyproject_check_import
 
 %files -f %{pyproject_files}
 %doc README.md
