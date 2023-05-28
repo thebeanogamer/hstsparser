@@ -57,7 +57,7 @@ jobs:
 
     steps:
       - name: Install Git
-        run: apt update && apt install git -y
+        run: dnf install git -y
 
       - name: Checkout repository
         uses: actions/checkout@v3
