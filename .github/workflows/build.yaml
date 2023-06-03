@@ -53,7 +53,9 @@ jobs:
 
   rpm:
     runs-on: ubuntu-latest
-    container: docker.io/library/fedora:38
+    container:
+      image: docker.io/library/fedora:38
+      options: "--privileged"
 
     steps:
       - name: Install Git
