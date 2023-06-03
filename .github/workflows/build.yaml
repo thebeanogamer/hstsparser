@@ -65,11 +65,11 @@ jobs:
           fetch-depth: 0
 
       - name: Install dependencies
-        run: dnf install make tar -y
+        run: dnf install rpmdevtools rpm-build make tar dnf-plugins-core -y
 
       - name: Build SRPM
         run: make srpm
-      
+
       - name: Build RPM in Mock
         uses: mmornati/docker-mock-rpmbuilder@master
         env:
