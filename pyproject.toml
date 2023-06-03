@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "hstsparser"
-version = "1.1.8"
+version = "1.1.9"
 description = "A tool to parse Firefox and Chrome HSTS databases into forensic artifacts."
 authors = ["Daniel Milnes <daniel@daniel-milnes.uk>"]
 license = "MIT"
