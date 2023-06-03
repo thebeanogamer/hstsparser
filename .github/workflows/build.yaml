@@ -58,38 +58,27 @@ jobs:
       options: "--privileged"
 
     steps:
-      - name: Install Git
-        run: dnf install git -y
+      - name: Install dependencies
+        run: dnf install git rpmdevtools rpm-build make tar dnf-plugins-core mock -y
 
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
-      - name: Install dependencies
-        run: dnf install rpmdevtools rpm-build make tar dnf-plugins-core -y
-
-      - name: Build SRPM
-        run: make srpm
-
-      - name: Build RPM in Mock
-        uses: mmornati/docker-mock-rpmbuilder@master
-        env:
-          SPEC_FILE: "hstsparser.spec"
-          SOURCES: "rpmbuild/SOURCES/hstsparser-1.1.8.tar.gz"
-          MOCK_CONFIG: "fedora-38-x86_64"
-          MOUNT_POINT: "${GITHUB_WORKSPACE}"
+      - name: Build in Mock
+        run: make mock
 
       - name: Upload SRPM
         uses: actions/upload-artifact@v3
         with:
           name: hstsparser-1.1.8-3.fc38.src.rpm
-          path: rpmbuild/SRPMS/hstsparser-1.1.8-3.fc38.src.rpm
+          path: /var/lib/mock/fedora-38-x86_64/result/hstsparser-1.1.8-3.fc38.src.rpm
           if-no-files-found: error
 
       - name: Upload RPM
         uses: actions/upload-artifact@v3
         with:
           name: hstsparser-1.1.8-3.fc38.noarch.rpm
-          path: rpmbuild/output/hstsparser-1.1.8-3.fc38.noarch.rpm
+          path: /var/lib/mock/fedora-38-x86_64/result/hstsparser-1.1.8-3.fc38.noarch.rpm
           if-no-files-found: error
