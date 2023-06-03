@@ -1,4 +1,3 @@
-# Override the upstream tarball for testing
 VERSION := $(shell rpmspec -q hstsparser.spec --queryformat='%{version}')
 RELEASE := $(shell rpmspec -q hstsparser.spec --queryformat='%{release}')
 
