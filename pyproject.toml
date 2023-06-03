@@ -20,14 +20,14 @@ classifiers = [
 ]
 
 [tool.poetry.dependencies]
-python = ">=3.9,<3.12"
+python = ">=3.9"
 prettytable = ">=0.7.2,<3.8"
 
 [tool.poetry.scripts]
 hstsparser = "hstsparser:main"
 
 [tool.poetry.group.windows.dependencies]
-pyinstaller = "^5.11.0"
+pyinstaller = [{ version = "^5.11.0", python = ">=3.9,<3.12" }]
 pywin32-ctypes = "^0.2.0"
 pefile = "^2023.2.7"
 
