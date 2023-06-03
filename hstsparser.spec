@@ -2,19 +2,19 @@ Name:           hstsparser
 Version:        1.1.8
 Release:        4%{?dist}
 Summary:        HSTS Digital Forensics parser
-
 License:        MIT
 URL:            https://github.com/thebeanogamer/hstsparser
 Source:         %{url}/archive/%{version}/hstsparser-%{version}.tar.gz
-
 BuildArch:      noarch
 BuildRequires:  python3-devel
 BuildRequires:  help2man
 
 %py_provides python3-hstsparser
 
+
 %description %{expand:
 Parse Firefox and Chrome HSTS databases into Digital Forensics artifacts}
+
 
 %prep
 %autosetup -p1 -n hstsparser-%{version}
@@ -34,20 +34,24 @@ ln -s hstsparser.py hstsparser
 help2man -N ./hstsparser -o hstsparser.1 --version-string='%{version}'
 rm -f hstsparser
 
+
 %install
 %pyproject_install
 %pyproject_save_files hstsparser
 mkdir -p %{buildroot}%{_mandir}/man1/
 install -m 0555 hstsparser.1 %{buildroot}%{_mandir}/man1/hstsparser.1
 
+
 %check
 %pyproject_check_import
+
 
 %files -f %{pyproject_files}
 %doc README.md
 %license LICENSE
 %{_bindir}/hstsparser
 %{_mandir}/man1/hstsparser.1*
+
 
 %changelog
 %autochangelog
