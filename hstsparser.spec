@@ -39,7 +39,7 @@ rm -f hstsparser
 %pyproject_install
 %pyproject_save_files hstsparser
 mkdir -p %{buildroot}%{_mandir}/man1/
-install -m 0555 hstsparser.1 %{buildroot}%{_mandir}/man1/hstsparser.1
+install -pm 0644 hstsparser.1 %{buildroot}%{_mandir}/man1/hstsparser.1
 
 
 %check
