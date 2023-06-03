@@ -9,8 +9,6 @@ Source:         %{url}/archive/%{version}/hstsparser-%{version}.tar.gz
 
 BuildArch:      noarch
 BuildRequires:  python3-devel
-BuildRequires:  python3dist(poetry)
-BuildRequires:  python3dist(tox-current-env)
 BuildRequires:  help2man
 
 %py_provides python3-hstsparser
