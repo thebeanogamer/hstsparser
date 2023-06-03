@@ -69,7 +69,8 @@ jobs:
       - name: Build in Mock
         run: make mock
 
-      - uses: actions/upload-artifact@v3
+      - name: Upload mock logs
+        uses: actions/upload-artifact@v3
         if: always()
         with:
           name: mock-logs
