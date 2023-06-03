@@ -12,8 +12,8 @@ BuildRequires:  help2man
 %py_provides python3-hstsparser
 
 
-%description %{expand:
-Parse Firefox and Chrome HSTS databases into Digital Forensics artifacts}
+%description
+Parse Firefox and Chrome HSTS databases into Digital Forensics artifacts.
 
 
 %prep
