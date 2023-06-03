@@ -1,5 +1,6 @@
 VERSION := $(shell rpmspec -q hstsparser.spec --queryformat='%{version}')
 RELEASE := $(shell rpmspec -q hstsparser.spec --queryformat='%{release}')
+FEDORARELEASE := 38
 
 tar:
 	mkdir -p rpmbuild/SOURCES/
@@ -16,7 +17,7 @@ rpm:
 	exit 1
 
 mock: srpm
-	mock -r fedora-38-x86_64 ./rpmbuild/SRPMS/hstsparser-$(VERSION)-$(RELEASE).src.rpm
+	mock -r fedora-$(FEDORARELEASE)-x86_64 ./rpmbuild/SRPMS/hstsparser-$(VERSION)-$(RELEASE).src.rpm
 
 clean:
 	rm -rf rpmbuild fedora-review
