@@ -35,7 +35,8 @@ mkdir -p %{buildroot}%{_mandir}/man1/
 # Fix command name in manpage
 ln -s hstsparser.py hstsparser
 
-# This runs outside the venv, so --version will return the default
+# hstsparser finds the version number by checking the installed package
+# The package isn't installed during the RPM build, so we override the version number on the man page with the one from the RPM
 help2man -N ./hstsparser -o %{buildroot}%{_mandir}/man1/hstsparser.1 --version-string='%{version}'
 rm -f hstsparser
 
