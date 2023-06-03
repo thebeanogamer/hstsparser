@@ -60,4 +60,4 @@ jobs:
         run: dnf install rpmlint -y
 
       - name: Lint RPM Spec File
-        run: rpmlint -v hstsparser.spec
+        run: rpmlint -sv hstsparser.spec
