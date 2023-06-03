@@ -21,7 +21,7 @@ classifiers = [
 
 [tool.poetry.dependencies]
 python = ">=3.9"
-prettytable = ">=0.7.2,<3.8"
+prettytable = ">=0.7.2"
 
 [tool.poetry.scripts]
 hstsparser = "hstsparser:main"
