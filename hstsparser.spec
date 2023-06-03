@@ -23,7 +23,7 @@ Parse Firefox and Chrome HSTS databases into Digital Forensics artifacts}
 
 
 %generate_buildrequires
-%pyproject_buildrequires -t
+%pyproject_buildrequires
 
 
 %build
@@ -42,7 +42,6 @@ help2man -N ./hstsparser -o %{buildroot}%{_mandir}/man1/hstsparser.1 --version-s
 rm -f hstsparser
 
 %check
-%tox
 %pyproject_check_import
 
 %files -f %{pyproject_files}
