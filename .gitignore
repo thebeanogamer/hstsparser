@@ -141,7 +141,7 @@ $RECYCLE.BIN/
 
 # End of https://www.gitignore.io/api/code,python,windows
 SiteSecurityServiceState.txt
-TransportSecurity
+TransportSecurity*
 wordlist.txt
 .venv
 
