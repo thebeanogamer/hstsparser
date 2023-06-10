@@ -107,6 +107,24 @@ def date_round(date: datetime.datetime) -> datetime.datetime:
     )
 
 
+def parse_chrome_record(data: dict, database: list, host: str, args: Namespace) -> None:
+    if "expect_ct" not in data:
+        if bool(data["sts_include_subdomains"]):
+            subdomains = "Yes"
+        else:
+            subdomains = "No"
+        record = [
+            host,
+            datetime.datetime.fromtimestamp(data["expiry"]),
+            subdomains,
+            datetime.datetime.fromtimestamp(data["sts_observed"]),
+        ]
+        if args.csv_file:
+            record[1] = date_round(record[1])
+            record[3] = date_round(record[3])
+        database.append(record)
+
+
 parser = ArgumentParser(prog="hstsparser", description="Process HSTS databases")
 parser.add_argument(
     dest="database_file",
@@ -137,7 +155,7 @@ try:
 except importlib.metadata.PackageNotFoundError:
     __version__ = "0.0.1"
 
-parser.add_argument('--version', action='version', version=f'%(prog)s {__version__}')
+parser.add_argument("--version", action="version", version=f"%(prog)s {__version__}")
 
 
 def main() -> None:
@@ -177,23 +195,24 @@ def main() -> None:
 
     if args.chrome:
         dirtydb = json.loads(dirtydb)
-        for i in dirtydb:
-            current = dirtydb[i]
-            if "expect_ct" not in current:
-                if bool(current["sts_include_subdomains"]):
-                    subdomains = "Yes"
-                else:
-                    subdomains = "No"
-                record = [
-                    i,
-                    datetime.datetime.fromtimestamp(current["expiry"]),
-                    subdomains,
-                    datetime.datetime.fromtimestamp(current["sts_observed"]),
-                ]
-                if args.csv_file:
-                    record[1] = date_round(record[1])
-                    record[3] = date_round(record[3])
-                database.append(record)
+
+        # v1 of this file did not specify a version number
+        chrome_version: int = dirtydb.get("version", 1)
+
+        match chrome_version:
+            case 1:
+                for i in dirtydb:
+                    parse_chrome_record(dirtydb[i], database, i, args)
+            case 2:
+                for i in dirtydb.get("sts", []):
+                    parse_chrome_record(i, database, i.get("host", ""), args)
+            case _:
+                print(
+                    "Unrecognised Chrome file version. "
+                    "Please raise an issue on https://github.com/thebeanogamer/hstsparser"
+                )
+                raise NotImplementedError
+
         if args.wordlist_file:
             wordlist = args.wordlist_file.read().splitlines()
             rainbow = []
