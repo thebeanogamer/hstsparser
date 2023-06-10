@@ -1,5 +1,5 @@
 Name:           hstsparser
-Version:        1.1.9
+Version:        1.2.0
 Release:        1%{?dist}
 Summary:        HSTS Digital Forensics parser
 License:        MIT

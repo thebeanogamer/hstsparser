@@ -79,15 +79,15 @@ jobs:
       - name: Upload SRPM
         uses: actions/upload-artifact@v3
         with:
-          name: hstsparser-1.1.9-1.fc38.src.rpm
-          path: /var/lib/mock/fedora-38-x86_64/result/hstsparser-1.1.9-1.fc38.src.rpm
+          name: hstsparser-1.2.0-1.fc38.src.rpm
+          path: /var/lib/mock/fedora-38-x86_64/result/hstsparser-1.2.0-1.fc38.src.rpm
           if-no-files-found: error
 
       - name: Upload RPM
         uses: actions/upload-artifact@v3
         with:
-          name: hstsparser-1.1.9-1.fc38.noarch.rpm
-          path: /var/lib/mock/fedora-38-x86_64/result/hstsparser-1.1.9-1.fc38.noarch.rpm
+          name: hstsparser-1.2.0-1.fc38.noarch.rpm
+          path: /var/lib/mock/fedora-38-x86_64/result/hstsparser-1.2.0-1.fc38.noarch.rpm
           if-no-files-found: error
 
   rpmlint:
@@ -102,11 +102,11 @@ jobs:
       - name: Download RPM
         uses: actions/download-artifact@v2
         with:
-          name: hstsparser-1.1.9-1.fc38.noarch.rpm
+          name: hstsparser-1.2.0-1.fc38.noarch.rpm
           path: .
 
       - name: Install dependencies
         run: dnf install rpmlint -y
 
       - name: Lint RPM Spec File
-        run: rpmlint -sv ./hstsparser-1.1.9-1.fc38.noarch.rpm ./hstsparser.spec
+        run: rpmlint -sv ./hstsparser-1.2.0-1.fc38.noarch.rpm ./hstsparser.spec
