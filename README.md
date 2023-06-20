@@ -18,10 +18,11 @@ pip install hstsparser
 
 ### On Fedora
 
-HSTS Parser is available through Fedora COPR for Fedora 38+.
+![Fedora package](https://img.shields.io/fedora/v/hstsparser/f38?label=Fedora%2038&link=https%3A%2F%2Fpackages.fedoraproject.org%2Fpkgs%2Fhstsparser%2Fhstsparser%2F) ![Fedora package](https://img.shields.io/fedora/v/hstsparser/rawhide?label=Fedora%20Rawhide&link=https%3A%2F%2Fpackages.fedoraproject.org%2Fpkgs%2Fhstsparser%2Fhstsparser%2F)
+
+HSTS Parser is available for Fedora 38+.
 
 ```bash
-dnf copr enable thebeanogamer/hstsparser
 dnf install hstsparser
 ```
 
