@@ -18,7 +18,7 @@ pip install hstsparser
 
 ### On Fedora
 
-![Fedora package](https://img.shields.io/fedora/v/hstsparser/f38?label=Fedora%2038&link=https%3A%2F%2Fpackages.fedoraproject.org%2Fpkgs%2Fhstsparser%2Fhstsparser%2F) ![Fedora package](https://img.shields.io/fedora/v/hstsparser/rawhide?label=Fedora%20Rawhide&link=https%3A%2F%2Fpackages.fedoraproject.org%2Fpkgs%2Fhstsparser%2Fhstsparser%2F)
+[![Fedora package](https://img.shields.io/fedora/v/hstsparser/f38?label=Fedora%2038&link=https%3A%2F%2Fpackages.fedoraproject.org%2Fpkgs%2Fhstsparser%2Fhstsparser%2F)](https://packages.fedoraproject.org/pkgs/hstsparser/hstsparser/) [![Fedora package](https://img.shields.io/fedora/v/hstsparser/rawhide?label=Fedora%20Rawhide&link=https%3A%2F%2Fpackages.fedoraproject.org%2Fpkgs%2Fhstsparser%2Fhstsparser%2F)](<https://packages.fedoraproject.org/pkgs/hstsparser/hstsparser/>)
 
 HSTS Parser is available for Fedora 38+.
 
