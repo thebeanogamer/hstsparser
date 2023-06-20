@@ -154,3 +154,4 @@ rpms
 
 review-hstsparser/
 *.rpm
+prepare_sources_result/

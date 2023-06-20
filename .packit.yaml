@@ -1,0 +1,27 @@
+---
+# See the documentation for more information:
+# https://packit.dev/docs/configuration/
+
+specfile_path: hstsparser.spec
+
+# .packit.yaml is not synced, as the version in dist-git is different
+files_to_sync:
+  - hstsparser.spec
+
+# Build versions are explicit until Fedora 39 is branched
+# Dependencies cannot be fulfilled on Fedora 37
+jobs:
+  - job: copr_build
+    trigger: pull_request
+    targets:
+      - fedora-38
+      - fedora-development
+
+  - job: tests
+    trigger: pull_request
+    targets:
+      - fedora-38
+      - fedora-development
+
+upstream_package_name: hstsparser
+downstream_package_name: hstsparser
