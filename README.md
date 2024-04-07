@@ -45,7 +45,7 @@ positional arguments:
 
 optional arguments:
   -h, --help   show this help message and exit
-  -w WORDLIST  The path to the database to be processed
+  -w WORDLIST  The path to a file containing a wordlist for bruteforcing hashes
   --csv CSV    Output to a CSV file
   --firefox    Process a Firefox database
   --chrome     Process a Chrome database
