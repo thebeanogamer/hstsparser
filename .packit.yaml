@@ -8,19 +8,17 @@ specfile_path: hstsparser.spec
 files_to_sync:
   - hstsparser.spec
 
-# Build versions are explicit until Fedora 39 is branched
-# Dependencies cannot be fulfilled on Fedora 37
 jobs:
   - job: copr_build
     trigger: pull_request
     targets:
-      - fedora-38
+      - fedora-branched
       - fedora-development
 
   - job: tests
     trigger: pull_request
     targets:
-      - fedora-38
+      - fedora-branched
       - fedora-development
 
 upstream_package_name: hstsparser
