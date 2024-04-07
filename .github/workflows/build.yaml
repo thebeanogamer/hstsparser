@@ -54,7 +54,7 @@ jobs:
   rpm:
     runs-on: ubuntu-latest
     container:
-      image: docker.io/library/fedora:38
+      image: docker.io/library/fedora:40
       options: "--privileged"
     outputs:
       version: "${{ steps.version.outputs.version }}"
@@ -76,7 +76,7 @@ jobs:
         if: always()
         with:
           name: mock-logs
-          path: /var/lib/mock/fedora-38-x86_64/result/*
+          path: /var/lib/mock/fedora-40-x86_64/result/*
 
       - name: Get RPM Version and Release
         id: version
@@ -86,19 +86,19 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: hstsparser-${{ steps.version.outputs.version }}.src.rpm
-          path: /var/lib/mock/fedora-38-x86_64/result/hstsparser-${{ steps.version.outputs.version }}.src.rpm
+          path: /var/lib/mock/fedora-40-x86_64/result/hstsparser-${{ steps.version.outputs.version }}.src.rpm
           if-no-files-found: error
 
       - name: Upload RPM
         uses: actions/upload-artifact@v3
         with:
           name: hstsparser-${{ steps.version.outputs.version }}.noarch.rpm
-          path: /var/lib/mock/fedora-38-x86_64/result/hstsparser-${{ steps.version.outputs.version }}.noarch.rpm
+          path: /var/lib/mock/fedora-40-x86_64/result/hstsparser-${{ steps.version.outputs.version }}.noarch.rpm
           if-no-files-found: error
 
   rpmlint:
     runs-on: ubuntu-latest
-    container: docker.io/library/fedora:38
+    container: docker.io/library/fedora:40
     needs: rpm
 
     steps:

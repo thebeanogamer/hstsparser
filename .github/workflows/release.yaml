@@ -36,7 +36,7 @@ jobs:
           generate_release_notes: true
           files: |
             hstsparser.exe
-            hstsparser-${{inputs.version}}.fc38.noarch.rpm
+            hstsparser-${{inputs.version}}.fc40.noarch.rpm
 
   pypi:
     runs-on: ubuntu-latest
