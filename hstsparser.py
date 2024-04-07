@@ -135,7 +135,7 @@ parser.add_argument(
 parser.add_argument(
     "-w",
     dest="wordlist_file",
-    help="The path to the database to be processed",
+    help="The path to a file containing a wordlist for bruteforcing hashes",
     metavar="WORDLIST",
     type=lambda x: is_valid_file(parser, x),
 )
