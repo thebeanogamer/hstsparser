@@ -40,7 +40,7 @@ flake8-import-order = "^0.18.2"
 flake8-string-format = "^0.3.0"
 flake8-tidy-imports = "^4.8.0"
 flake8-todo = "^0.7"
-safety = "^2.3.5"
+safety = ">=2.3.5,<4.0.0"
 flake8-formatter-junit-xml = "^0.0.6"
 
 [build-system]
