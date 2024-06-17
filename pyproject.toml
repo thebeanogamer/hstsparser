@@ -33,7 +33,7 @@ pywin32-ctypes = "^0.2.0"
 pefile = "^2023.2.7"
 
 [tool.poetry.group.dev.dependencies]
-flake8 = "^6.0.0"
+flake8 = ">=6,<8"
 flake8-bandit = "^4.1.1"
 flake8-bugbear = "^23.5.9"
 flake8-import-order = "^0.18.2"
