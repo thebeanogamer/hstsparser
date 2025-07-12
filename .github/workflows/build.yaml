@@ -46,7 +46,7 @@ jobs:
         run: dist\hstsparser.exe -h
 
       - name: Upload Executable
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: hstsparser.exe
           path: dist/hstsparser.exe
@@ -72,7 +72,7 @@ jobs:
         run: make mock
 
       - name: Upload mock logs
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: always()
         with:
           name: mock-logs
@@ -83,14 +83,14 @@ jobs:
         run: echo "version=$(rpmspec -q hstsparser.spec --queryformat='%{version}-%{release}')" >> "$GITHUB_OUTPUT"
 
       - name: Upload SRPM
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: hstsparser-${{ steps.version.outputs.version }}.src.rpm
           path: /var/lib/mock/fedora-40-x86_64/result/hstsparser-${{ steps.version.outputs.version }}.src.rpm
           if-no-files-found: error
 
       - name: Upload RPM
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: hstsparser-${{ steps.version.outputs.version }}.noarch.rpm
           path: /var/lib/mock/fedora-40-x86_64/result/hstsparser-${{ steps.version.outputs.version }}.noarch.rpm
