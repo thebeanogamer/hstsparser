@@ -1,6 +1,6 @@
 VERSION := $(shell rpmspec -q hstsparser.spec --queryformat='%{version}')
 RELEASE := $(shell rpmspec -q hstsparser.spec --queryformat='%{release}')
-FEDORARELEASE := 38
+FEDORARELEASE := 42
 
 tar:
 	mkdir -p rpmbuild/SOURCES/

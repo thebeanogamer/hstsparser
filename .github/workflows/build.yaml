@@ -16,7 +16,7 @@ jobs:
           python-version: '3.11'
 
       - name: Cache Python modules
-        uses: actions/cache@v1
+        uses: actions/cache@v4
         env:
           cache-name: cache-node-modules
         with:
@@ -46,7 +46,7 @@ jobs:
         run: dist\hstsparser.exe -h
 
       - name: Upload Executable
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: hstsparser.exe
           path: dist/hstsparser.exe
@@ -54,7 +54,7 @@ jobs:
   rpm:
     runs-on: ubuntu-latest
     container:
-      image: docker.io/library/fedora:40
+      image: docker.io/library/fedora:42
       options: "--privileged"
     outputs:
       version: "${{ steps.version.outputs.version }}"
@@ -72,33 +72,33 @@ jobs:
         run: make mock
 
       - name: Upload mock logs
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: always()
         with:
           name: mock-logs
-          path: /var/lib/mock/fedora-40-x86_64/result/*
+          path: /var/lib/mock/fedora-42-x86_64/result/*
 
       - name: Get RPM Version and Release
         id: version
         run: echo "version=$(rpmspec -q hstsparser.spec --queryformat='%{version}-%{release}')" >> "$GITHUB_OUTPUT"
 
       - name: Upload SRPM
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: hstsparser-${{ steps.version.outputs.version }}.src.rpm
-          path: /var/lib/mock/fedora-40-x86_64/result/hstsparser-${{ steps.version.outputs.version }}.src.rpm
+          path: /var/lib/mock/fedora-42-x86_64/result/hstsparser-${{ steps.version.outputs.version }}.src.rpm
           if-no-files-found: error
 
       - name: Upload RPM
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: hstsparser-${{ steps.version.outputs.version }}.noarch.rpm
-          path: /var/lib/mock/fedora-40-x86_64/result/hstsparser-${{ steps.version.outputs.version }}.noarch.rpm
+          path: /var/lib/mock/fedora-42-x86_64/result/hstsparser-${{ steps.version.outputs.version }}.noarch.rpm
           if-no-files-found: error
 
   rpmlint:
     runs-on: ubuntu-latest
-    container: docker.io/library/fedora:40
+    container: docker.io/library/fedora:42
     needs: rpm
 
     steps:
@@ -106,7 +106,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Download RPM
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: hstsparser-${{ needs.rpm.outputs.version }}.noarch.rpm
           path: .
