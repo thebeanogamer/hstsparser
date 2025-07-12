@@ -54,7 +54,7 @@ jobs:
   rpm:
     runs-on: ubuntu-latest
     container:
-      image: docker.io/library/fedora:40
+      image: docker.io/library/fedora:42
       options: "--privileged"
     outputs:
       version: "${{ steps.version.outputs.version }}"
