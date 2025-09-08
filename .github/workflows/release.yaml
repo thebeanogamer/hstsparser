@@ -14,7 +14,7 @@ jobs:
     steps:
       - name: Download Windows Release
         id: download-windows-artifact
-        uses: dawidd6/action-download-artifact@v2
+        uses: dawidd6/action-download-artifact@v6
         with:
           workflow: build.yaml
           commit: ${{github.event.pull_request.head.sha}}
@@ -22,7 +22,7 @@ jobs:
 
       - name: Download RPM
         id: download-rpm-artifact
-        uses: dawidd6/action-download-artifact@v2
+        uses: dawidd6/action-download-artifact@v6
         with:
           workflow: build.yaml
           commit: ${{github.event.pull_request.head.sha}}
